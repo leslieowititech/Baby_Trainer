@@ -10,6 +10,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    baby_relationship = db.relationship('Baby', back_populates='user_relationship')
+    feed_relationship = db.relationship('Feed')
+    diaper_relationship = db.relationship('Diaper')
+    sleep_schedule_relationship = db.relationship('Sleep_Schedule')
 
     @property
     def password(self):

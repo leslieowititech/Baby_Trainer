@@ -10,6 +10,7 @@ class Feed(db.Model):
     amount = db.Column(db.Integer)
     user_id = db.Column(db.Integer, nullable=False)
     baby_id = db.Column(db.Integer, nullable=False)
+    chart_relationship = db.relationship('Chart')
 
     def to_dict(self):
         return {
