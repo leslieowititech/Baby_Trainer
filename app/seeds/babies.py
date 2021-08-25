@@ -17,5 +17,5 @@ def seed_babies():
     db.session.commit()
 
 def undo_babies():
-    db.session.execute('TRUNCATE comments RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE babies RESTART IDENTITY CASCADE;')
     db.session.commit()
