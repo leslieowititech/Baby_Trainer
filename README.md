@@ -132,3 +132,6 @@ of your Heroku app in the url and tag name:
    ```bash=3
    docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
    ```
+
+   heroku run -a appname flask db upgrade
+   heroku run -a appname flask seed all

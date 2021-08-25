@@ -10,8 +10,8 @@ class Baby(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     feed_relationship = db.relationship('Feed') 
     diaper_relationship = db.relationship('Diaper') 
-    sleep_schedule_relationship = db.relationship('Sleep_Schedule')
-    user_relationship = db.relationship('User', back_populates='baby_relatioship')
+    sleep_relationship = db.relationship('Sleep')
+    user_relationship = db.relationship('User', back_populates='baby_relationship')
 
     def to_dict(self):
         return {

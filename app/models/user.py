@@ -13,7 +13,8 @@ class User(db.Model, UserMixin):
     baby_relationship = db.relationship('Baby', back_populates='user_relationship')
     feed_relationship = db.relationship('Feed')
     diaper_relationship = db.relationship('Diaper')
-    sleep_schedule_relationship = db.relationship('Sleep_Schedule')
+    sleep_schedule_relationship = db.relationship('Sleep')
+    
 
     @property
     def password(self):

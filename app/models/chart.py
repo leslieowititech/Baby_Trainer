@@ -7,7 +7,7 @@ class Chart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     feed_id = db.Column(db.Integer, db.ForeignKey('feeds.id'))
     diaper_id = db.Column(db.Integer, db.ForeignKey('diapers.id'))
-    sleep_id = db.Column(db.Integer, db.ForeignKey('sleep_shedules.id'))    
+    sleep_id = db.Column(db.Integer, db.ForeignKey('sleep.id'))    
 
     def to_dict(self):
         return {
