@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+// import { useSelector } from 'react-redux';
+import LoginFormModal from '../LoginFormModal';
 
 import { login } from '../../store/session';
 import './SplashPage.css';

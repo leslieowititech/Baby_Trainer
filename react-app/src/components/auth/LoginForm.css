@@ -1,0 +1,40 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Epilogue', sans-serif;
+}
+
+.login-form{
+    border: 1px solid red;
+    height: 400px;
+    width: 400px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-input{
+    background-color: #C4C4C4;
+    height: 40px;
+    width: 200px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-radius: 8px;
+}
+
+.form-login-btn{
+    background-color: #F2C2C2;
+    height: 40px;
+    width: 215px;
+    border-radius: 8px;
+
+}
+
+.title{
+    font-size: medium;
+    font-weight: normal;
+    position: relative;
+    bottom: 60px;
+}
