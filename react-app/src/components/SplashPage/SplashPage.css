@@ -1,0 +1,62 @@
+* {
+    font-family: 'Epilogue', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.splash-page-btn{
+    list-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    /* border: 1px solid red; */
+    width: 25em;
+    height: 2em;
+    border-radius: 8px;
+    background-color: #F5EDD7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    color: black;
+  
+}
+
+.splash-page-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;   
+  padding: 25px;
+  
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.demo-btn{
+    background-color: #F2C2C2;
+}
+
+.demo-btn > button {
+    border-style: none;
+    background: none;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.splash-page-h1{
+    /* border: 1px solid red; */
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+
+
+
