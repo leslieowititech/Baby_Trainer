@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 
 import SplashPage from './components/SplashPage/SplashPage';
+import HomePage from './components/HomePage/HomePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +45,9 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage/>
         </Route>
+        <ProtectedRoute path='/home'>
+          <HomePage/>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
