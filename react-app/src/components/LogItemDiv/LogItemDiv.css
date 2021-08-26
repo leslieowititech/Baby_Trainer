@@ -1,0 +1,19 @@
+*{
+    font-family: 'Epilogue', sans-serif;
+}
+
+.log-item{
+    /* border: 1px solid red; */
+    height: 150px;
+    width: 150px;
+    border-radius: 8px;
+    background-color: #CEE2DF;
+    cursor: pointer;
+}
+
+.log-item-title{
+    font-size: medium;
+    position: relative;
+    left: 90px;
+    top: 20px;
+}
