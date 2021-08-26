@@ -1,0 +1,21 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.loggging-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 1px solid red; */
+    width: 70%;
+    margin-top: 25%;
+    flex-wrap: wrap;
+}
+
+.home-page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

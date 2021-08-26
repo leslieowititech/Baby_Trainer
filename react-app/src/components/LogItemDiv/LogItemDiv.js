@@ -2,10 +2,12 @@ import React from 'react'
 
 import './LogItemDiv.css'
 
-const LogItemDiv = () => {
+const LogItemDiv = ({title}) => {
     return (
-        <div>
-            
+        <div className='log-item'>
+            <h2 className='log-item-title'>
+                {title}
+            </h2>
         </div>
     )
 }
