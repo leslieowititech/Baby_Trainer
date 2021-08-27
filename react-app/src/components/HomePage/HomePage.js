@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import './HomePage.css'
+import * as babyActions from '../../store/baby';
 
 const HomePage = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
+    const babies = useSelector(state => state.babies)
+    
+   
+    useEffect(() => {
+        dispatch(babyActions.findBabies())
+    },[dispatch])
+
     return (
         <div className='home-page-container'>
            <div className='nav-bar'>
