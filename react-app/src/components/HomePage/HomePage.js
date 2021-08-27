@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
