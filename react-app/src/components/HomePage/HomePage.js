@@ -7,8 +7,10 @@ import './HomePage.css'
 const HomePage = () => {
     return (
         <div className='home-page-container'>
-           Hello from home page
-           <LogoutButton/>           
+           <div className='nav-bar'>
+                Hello from home page
+                <LogoutButton/>           
+           </div>
            <div className='loggging-div'>
                 <LogItemDiv title='Sleep'/>
                 <LogItemDiv title='Feed'/>
