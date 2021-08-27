@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
+import DropDown from '../BabyDropDown/BabyDropDown';
 import './HomePage.css'
 import * as babyActions from '../../store/baby';
 
@@ -20,6 +21,7 @@ const HomePage = () => {
         <div className='home-page-container'>
            <div className='nav-bar'>
                 Hello from home page
+                <DropDown/>
                 <LogoutButton/>           
            </div>
            <div className='loggging-div'>
