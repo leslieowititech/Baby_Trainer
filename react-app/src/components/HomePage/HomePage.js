@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // import BabyForm from '../forms/BabyForm';
 // import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
@@ -12,13 +12,20 @@ import './HomePage.css'
 // import * as babyActions from '../../store/baby';
 
 const HomePage = () => {
-    const [showBabyForm, setShowBabyForm] = useState(false)
+    // const dispatch = useDispatch()
+    const [showBabyForm, setShowBabyForm] = useState(false);
+
+    // const user = useSelector(state => state.user)
+
+    // useEffect(() => {
+    //     dispatch(babyActions.addBaby(user.id))
+    // },[])
 
     return (
         <div className='home-page-container'>
-            {showBabyForm && <BabyForm/>}
+            {showBabyForm && <BabyForm setShowBabyForm={setShowBabyForm}/>}
            <div className='nav-bar'>
-                {/* Hello from home page */}
+              
                 <DropDown setShowBabyForm={setShowBabyForm} showBabyForm={showBabyForm}/>
                 <LogoutButton/>           
            </div>

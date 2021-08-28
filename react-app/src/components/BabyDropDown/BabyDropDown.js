@@ -7,31 +7,17 @@ import './BabyDropDown.css'
 
 const DropDown = ({ showBabyForm, setShowBabyForm}) => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
-    const babies = useSelector(state => state.babies)
-
+    const user = useSelector(state => state.session.user);
+    const things = Object.values(useSelector(state => state.babies));
+    const babies = things.filter(things => things?.user_id === user.id);
     const [info, setInfo] = useState('Add a baby');
     const [isClicked, setClicked] = useState(false);
-    // const [babyForm, setBabyForm] = useState(false);
+    
+    
 
-    const options2 = () => {
-        let arr;
+    
+    useEffect(() => {  
         if(babies.length){
-            arr =  babies.filter(baby => {
-                return baby.user_id === user.id
-            })
-            
-        }else{
-            arr = []
-        }
-        return arr;
-    }
-    
-
-    
-    useEffect(() => {
-        
-        if(options2().length){
             setInfo('Select a Baby')
         }
     })
@@ -50,8 +36,8 @@ const DropDown = ({ showBabyForm, setShowBabyForm}) => {
             {isClicked &&
             
                 <div className='dropdown-items'>
-                    {options2().map(baby => (
-                        <li key={baby.id} className='drop-down-list-item'>{baby.ame}</li>
+                    {babies.map(baby => (
+                        <li key={baby.id} className='drop-down-list-item'>{baby.name}</li>
                     ))}
                 <button 
                         className='add-baby-btn'

@@ -16,7 +16,7 @@ class Baby(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'ame': self.name,
+            'name': self.name,
             'birthday': self.birthday,
             'user_id': self.user_id
         }
