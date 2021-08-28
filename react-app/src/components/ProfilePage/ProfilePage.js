@@ -34,8 +34,8 @@ const ProfilePage = () => {
                     {babies?.map(baby => (
                         <div key={baby.id} className='baby-item-details'>
                             <div className='baby-info'>
-                                <div>{baby.name}</div>
-                                <div>{baby.birthday}</div>
+                                <div>Baby name: {baby.name}</div>
+                                <div>Birthday: {baby.birthday}</div>
                             </div>  
                             <div className='baby-buttons'>
                                 <button>Edit</button>
