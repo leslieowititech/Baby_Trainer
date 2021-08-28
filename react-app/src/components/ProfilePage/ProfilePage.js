@@ -1,7 +1,10 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import * as babyActions from '../../store/baby';
+import './ProfilePage.css';
+import LogoutButton from '../auth/LogoutButton';
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
@@ -14,20 +17,27 @@ const ProfilePage = () => {
     }, [dispatch])
     return (
         <div className='profilepage-container'>
-            <div className='user-info'></div>
-            <div className='user-babies-info'>
-                <div className='baby-item'>
+            <div className='nav-bar'>
+                <NavLink to='/home' className='home-link'>Home</NavLink>
+                <LogoutButton/>
+            </div>
+            <div className='user-info'>
+                <div className='circle'></div>
+                {user?.username}
+            </div>
+                <div className='baby-title'>
                     <h2>My Babies</h2>
-                     Icons go here
+                     
                 </div>
-                <div className='baby-item-details'>
+            <div className='user-babies-info'>
+                <div >
                     {babies?.map(baby => (
-                        <div>
-                            <div>
+                        <div key={baby.id} className='baby-item-details'>
+                            <div className='baby-info'>
                                 <div>{baby.name}</div>
                                 <div>{baby.birthday}</div>
                             </div>  
-                            <div>
+                            <div className='baby-buttons'>
                                 <button>Edit</button>
                                 <button>Delete</button>
                             </div>                         

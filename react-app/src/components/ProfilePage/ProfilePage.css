@@ -1,0 +1,60 @@
+.profilepage-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info{
+    width: 100%;
+    /* border: 1px solid red; */
+    border-bottom: 1px solid black;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.circle{
+    border-radius: 50%;
+    background-color: #C1DDD8;
+    height: 90px;
+    width: 90px;
+    margin-left: 30px;
+}
+
+.home-link{
+    margin-left: 30px;
+}
+
+.user-babies-info{
+    display: flex;
+    /* border: 1px solid green; */
+    width: 100%;
+   
+}
+
+.baby-item-details{
+    display: flex;
+}
+
+.baby-title{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.baby-info{
+    /* border: 1px solid red; */
+    width: 400px;
+    height: 80px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    border-radius: 8px;
+    background-color: #F5E4DC;
+  
+}
