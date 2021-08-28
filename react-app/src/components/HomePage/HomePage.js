@@ -4,8 +4,8 @@ import LogoutButton from '../auth/LogoutButton';
 
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
-import BabyForm from '../Forms/BabyForm';
-// import BabyForm from '../Forms/BabyForm'
+// import BabyForm from '../Forms/BabyForm';
+// import BabyForm from '../Forms/BabyForm';
 
 import './HomePage.css';
 
@@ -16,7 +16,7 @@ const HomePage = () => {
 
     return (
         <div className='home-page-container'>
-            {showBabyForm && <BabyForm setShowBabyForm={setShowBabyForm}/>}
+            {/* {showBabyForm && <BabyForm setShowBabyForm={setShowBabyForm}/>} */}
            <div className='nav-bar'>
               
                 <DropDown setShowBabyForm={setShowBabyForm} showBabyForm={showBabyForm}/>
