@@ -1,35 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+
 import * as babyActions from '../../store/baby';
 import './BabyDropDown.css'
 
-const DropDown = () => {
+const DropDown = ({ showBabyForm, setShowBabyForm}) => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
-    const babies = useSelector(state => state.babies)
-
+    const user = useSelector(state => state.session.user);
+    const things = Object.values(useSelector(state => state.babies));
+    const babies = things.filter(things => things?.user_id === user.id);
     const [info, setInfo] = useState('Add a baby');
     const [isClicked, setClicked] = useState(false);
-
-    const options2 = () => {
-        let arr;
-        if(babies.length){
-            arr =  babies.filter(baby => {
-                return baby.user_id === user.id
-            })
-            // arr = arr.map(baby => baby.ame)
-        }else{
-            arr = []
-        }
-        return arr;
-    }
-    // console.log(options2(), 'options2________')
+    
+    
 
     
-    useEffect(() => {
-        
-        if(options2().length){
+    useEffect(() => {  
+        if(babies.length){
             setInfo('Select a Baby')
         }
     })
@@ -39,6 +27,8 @@ const DropDown = () => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
 
+    
+
     return (
         // <Dropdown options={() => options2()} value={defaultOption} placeholder="Select a baby" />
         <div className='dropdown-container'>
@@ -46,10 +36,13 @@ const DropDown = () => {
             {isClicked &&
             
                 <div className='dropdown-items'>
-                    {options2().map(baby => (
-                        <li key={baby.id} className='drop-down-list-item'>{baby.ame}</li>
+                    {babies.map(baby => (
+                        <li key={baby.id} className='drop-down-list-item'>{baby.name}</li>
                     ))}
-                <button className='add-baby-btn'>{'Add a baby'} &#43;</button>
+                <button 
+                        className='add-baby-btn'
+                        onClick={()=> setShowBabyForm(true)}
+                >{'Add a baby'} &#43;</button>
                 </div>
             }
         </div>
