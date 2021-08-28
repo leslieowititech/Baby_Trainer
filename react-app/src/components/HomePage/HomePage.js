@@ -7,19 +7,12 @@ import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
 import BabyForm from '../Forms/BabyForm';
 
+import './HomePage.css';
 
-import './HomePage.css'
-// import * as babyActions from '../../store/baby';
 
 const HomePage = () => {
-    // const dispatch = useDispatch()
-    const [showBabyForm, setShowBabyForm] = useState(false);
 
-    // const user = useSelector(state => state.user)
-
-    // useEffect(() => {
-    //     dispatch(babyActions.addBaby(user.id))
-    // },[])
+    const [showBabyForm, setShowBabyForm] = useState(false);  
 
     return (
         <div className='home-page-container'>
