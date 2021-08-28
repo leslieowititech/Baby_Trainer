@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+
 import * as babyActions from '../../store/baby';
 import './BabyDropDown.css'
 
-const DropDown = () => {
+const DropDown = ({showBabyForm}) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const babies = useSelector(state => state.babies)
 
     const [info, setInfo] = useState('Add a baby');
     const [isClicked, setClicked] = useState(false);
+    // const [babyForm, setBabyForm] = useState(false);
 
     const options2 = () => {
         let arr;
@@ -18,13 +20,13 @@ const DropDown = () => {
             arr =  babies.filter(baby => {
                 return baby.user_id === user.id
             })
-            // arr = arr.map(baby => baby.ame)
+            
         }else{
             arr = []
         }
         return arr;
     }
-    // console.log(options2(), 'options2________')
+    
 
     
     useEffect(() => {
@@ -49,7 +51,10 @@ const DropDown = () => {
                     {options2().map(baby => (
                         <li key={baby.id} className='drop-down-list-item'>{baby.ame}</li>
                     ))}
-                <button className='add-baby-btn'>{'Add a baby'} &#43;</button>
+                <button 
+                        className='add-baby-btn'
+                        onClick={showBabyForm}
+                >{'Add a baby'} &#43;</button>
                 </div>
             }
         </div>
