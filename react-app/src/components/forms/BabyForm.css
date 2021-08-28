@@ -18,13 +18,29 @@
     justify-content: center;
     align-items: center;
     height: 300px;
-    width: 300px;
-    border: 1px solid red;
+    width: 250px;
+    /* border: 1px solid red; */
     background-color: white;
     border-radius: 10%;
     z-index: 4;
 }
 
 .baby-form-input{
-    
+    height: 30px;
+    width: 200px;
+    background-color: #C4C4C4;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.form-title{
+    font-size: medium;
+}
+
+.form-btn{
+    width: 210px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #F2C2C2;
 }

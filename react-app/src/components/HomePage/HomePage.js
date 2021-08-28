@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import BabyForm from '../forms/BabyForm';
 // import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
@@ -12,14 +12,14 @@ import './HomePage.css'
 // import * as babyActions from '../../store/baby';
 
 const HomePage = () => {
-    
+    const [showBabyForm, setShowBabyForm] = useState(false)
 
     return (
         <div className='home-page-container'>
-            <BabyForm/>
+            {showBabyForm && <BabyForm/>}
            <div className='nav-bar'>
                 {/* Hello from home page */}
-                <DropDown/>
+                <DropDown setShowBabyForm={setShowBabyForm} showBabyForm={showBabyForm}/>
                 <LogoutButton/>           
            </div>
            <div className='loggging-div'>

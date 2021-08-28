@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as babyActions from '../../store/baby';
 import './BabyDropDown.css'
 
-const DropDown = ({showBabyForm}) => {
+const DropDown = ({ showBabyForm, setShowBabyForm}) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const babies = useSelector(state => state.babies)
@@ -41,6 +41,8 @@ const DropDown = ({showBabyForm}) => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
 
+    
+
     return (
         // <Dropdown options={() => options2()} value={defaultOption} placeholder="Select a baby" />
         <div className='dropdown-container'>
@@ -53,7 +55,7 @@ const DropDown = ({showBabyForm}) => {
                     ))}
                 <button 
                         className='add-baby-btn'
-                        onClick={showBabyForm}
+                        onClick={()=> setShowBabyForm(true)}
                 >{'Add a baby'} &#43;</button>
                 </div>
             }
