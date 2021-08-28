@@ -18,6 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-image: url('/baloonbg.png'); */
 }
 
 .nav-bar{
@@ -38,4 +39,15 @@
     height: 30px;
     position: relative;
     right: 30px;
+}
+
+.settings{
+    font-size: xxx-large;
+    background-color: none;
+    border: none;
+    background: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    cursor: pointer;
 }
