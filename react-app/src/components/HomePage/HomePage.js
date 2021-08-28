@@ -4,7 +4,7 @@ import LogoutButton from '../auth/LogoutButton';
 
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
-// import BabyForm from '../Forms/BabyForm';
+import BabyForm from '../Forms/BabyForm';
 // import BabyForm from '../Forms/BabyForm'
 
 import './HomePage.css';
