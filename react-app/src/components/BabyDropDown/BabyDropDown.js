@@ -20,7 +20,7 @@ const DropDown = ({ showBabyForm, setShowBabyForm}) => {
         if(babies.length){
             setInfo('Select a Baby')
         }
-    })
+    },[babies.length])
    
 
     useEffect(() => {

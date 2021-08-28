@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-// import BabyForm from '../forms/BabyForm';
-// import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
-import BabyForm from '../Forms/BabyForm';
+// import BabyForm from '../Forms/BabyForm';
+// import BabyForm from '../Forms/BabyForm'
 
 import './HomePage.css';
 
@@ -27,6 +27,9 @@ const HomePage = () => {
                 <LogItemDiv title='Feed'/>
                 <LogItemDiv title='Diaper'/>
            </div>
+           <NavLink to='/users/profile'>
+                <button className='settings fas fa-cog'>⚙</button>
+           </NavLink>
         </div>
     )
 }
