@@ -20,7 +20,7 @@ const HomePage = () => {
     return (
         <div className='home-page-container'>
            <div className='nav-bar'>
-                Hello from home page
+                {/* Hello from home page */}
                 <DropDown/>
                 <LogoutButton/>           
            </div>
