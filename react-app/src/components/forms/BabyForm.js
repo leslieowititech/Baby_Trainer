@@ -7,7 +7,7 @@ import './BabyForm.css';
 import * as babyActions from '../../store/baby';
 
 
-const BabyForm = ({setShowBabtForm}) => {
+const BabyForm = ({ setShowBabyForm}) => {
     const history = useHistory()
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
@@ -19,6 +19,7 @@ const BabyForm = ({setShowBabtForm}) => {
        
         dispatch(babyActions.addBaby(name, birthday, user.id))
         history.push('/home')
+        setShowBabyForm(false)
     }
     
 
