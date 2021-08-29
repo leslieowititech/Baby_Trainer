@@ -43,7 +43,7 @@ export const findBabies = () => async dispatch => {
         }
     })
     const data = await response.json();   
-    console.log(data, 'allbabies____here') 
+    // console.log(data, 'allbabies____here') 
     if(response.ok){
         await dispatch(getBaby(data));
         return response;
@@ -51,7 +51,7 @@ export const findBabies = () => async dispatch => {
 }
 
 export const addBaby = (name, birthday, id) => async (dispatch) => {
-    console.log('Payload____ HEREEE')
+    // console.log('Payload____ HEREEE')
     const response = await fetch('/api/babies/create', {
         method: 'POST',
         headers: {
