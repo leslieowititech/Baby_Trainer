@@ -1,6 +1,7 @@
 const CREATE_BABY = 'babies/SET_BABY';
 const GET_BABY = 'babies/GET_BABY';
 const DELETE_BABY = 'babies/DELETE_BABY';
+const EDIT_BABY = 'babies/EDIT_BABY';
 
 
 const setBaby = (baby) => {
@@ -20,7 +21,14 @@ const getBaby = (baby) => {
 const deleteBaby = (id) => {
     return {
         type: DELETE_BABY,
-        babId: id
+        id
+    }
+}
+
+const editBaby = (baby) => {
+    return {
+        type: EDIT_BABY,
+        baby
     }
 }
 
@@ -39,8 +47,27 @@ const babyReducer = (state = initialState, action) => {
         case DELETE_BABY:
              delete newState[action.id];
              return newState
+        case EDIT_BABY:
+            return {
+                ...state,
+                [action.baby.id]: action.baby
+            }
         default:
             return state
+    }
+}
+
+export const editABaby = (baby, id) => async (dispatch) => {
+    const response = await fetch(`/api/babies/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(baby)
+    })
+
+    if(response.ok){
+        const item = await response.json();
+        dispatch(editBaby(item));
+        return item;
     }
 }
 
