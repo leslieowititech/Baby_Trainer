@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { addBaby } from '../../store/baby';
+import './AddBabyForm.css'
 
 
 const AddBabyForm = () => {
@@ -25,7 +27,7 @@ const AddBabyForm = () => {
 
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='add-baby-form'>
             <ul>
                 {errors.map((error, index) => (
                     <li key={index}>{error}</li>
