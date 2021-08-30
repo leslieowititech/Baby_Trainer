@@ -82,3 +82,8 @@
 .edit-btn{
     background-color: #F5EDD7;
 }
+
+.profile-edit-baby-form{
+    display: flex;
+    flex-direction: column;
+}
