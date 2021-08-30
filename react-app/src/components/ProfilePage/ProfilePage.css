@@ -12,6 +12,7 @@
     height: 200px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .circle{
@@ -30,6 +31,8 @@
     display: flex;
     /* border: 1px solid green; */
     width: 100%;
+    align-items: center;
+    justify-content: center;
    
 }
 
@@ -93,4 +96,9 @@
 .profile-page-form-input{
     border-radius: 8px;
     margin-bottom: 5px;
+}
+
+.baby-title{
+    display: flex;
+    align-items: center;
 }
