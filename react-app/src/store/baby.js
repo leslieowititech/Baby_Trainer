@@ -17,6 +17,13 @@ const getBaby = (baby) => {
     }
 }
 
+const deleteBaby = (id) => {
+    return {
+        type: DELETE_BABY,
+        babId: id
+    }
+}
+
 const initialState = { babies: null}
 
 const babyReducer = (state = initialState, action) => {
@@ -30,7 +37,8 @@ const babyReducer = (state = initialState, action) => {
             newState[action.payload.baby?.id] = action.payload.baby
             return newState
         case DELETE_BABY:
-             return { baby: null }
+             delete newState[action.id];
+             return newState
         default:
             return state
     }
@@ -78,8 +86,18 @@ export const addBaby = (name, birthday, id) => async (dispatch) => {
     }
 }
 
-export const deleteBaby = () => {
-    
+export const deleteABaby = (id) => async (dispatch) => {
+    const response = await fetch(`/api/babies/${id}`, {
+        method: 'DELETE',
+    });
+
+    if(response.ok) {
+        await dispatch(deleteBaby(id))
+        return response
+    }else{
+        return [`That didn't work please try again! :(`]
+    }
+
 }
 
 export default babyReducer;

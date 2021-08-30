@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired
 
 class  BabyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
-    birthday = DateField('birthday', validators=[DataRequired()], format='%m-%d-%Y')
+    birthday = DateField('birthday', validators=[DataRequired()])

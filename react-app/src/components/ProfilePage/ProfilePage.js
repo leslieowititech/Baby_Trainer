@@ -12,6 +12,10 @@ const ProfilePage = () => {
     const things = Object.values(useSelector(state => state.babies));
     const babies = things.filter(things => things?.user_id === user.id);
 
+    const deleteSpecificBaby = (id) => {
+        dispatch(babyActions.deleteABaby(id)) 
+    }
+
     useEffect(() => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
@@ -34,12 +38,12 @@ const ProfilePage = () => {
                     {babies?.map(baby => (
                         <div key={baby.id} className='baby-item-details'>
                             <div className='baby-info'>
-                                <div>Baby name: {baby.name}</div>
-                                <div>Birthday: {baby.birthday}</div>
+                                <div className='info-item'>Baby name: {baby.name}</div>
+                                <div className='info-item'>Birthday: {baby.birthday}</div>
                             </div>  
                             <div className='baby-buttons'>
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                <button className='util-btn edit-btn'>&#9998;</button>
+                                <button onClick={() => deleteSpecificBaby(baby.id)} className='util-btn delete-btn'>&#128465;</button>
                             </div>                         
                         </div>
                     ))}
