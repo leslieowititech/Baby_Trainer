@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-
+import AddBabyFormModal from '../LoginFormModal';
 import * as babyActions from '../../store/baby';
 import './BabyDropDown.css'
 
@@ -31,18 +31,15 @@ const DropDown = () => {
 
     return (
         // <Dropdown options={() => options2()} value={defaultOption} placeholder="Select a baby" />
-        <div className='dropdown-container'>
+        <div className='dropdown-container'>            
             <div className='dropdown-btn ' onClick={isClicked ? () => setClicked(false) : () => setClicked(true)}>{info} &#x25BC;</div>
             {isClicked &&
             
                 <div className='dropdown-items'>
                     {babies.map(baby => (
                         <li key={baby.id} className='drop-down-list-item'>{baby.name}</li>
-                    ))}
-                <button 
-                        className='add-baby-btn'
-                     
-                >{'Add a baby'} &#43;</button>
+                    ))}                
+                <AddBabyFormModal />
                 </div>
             }
         </div>
