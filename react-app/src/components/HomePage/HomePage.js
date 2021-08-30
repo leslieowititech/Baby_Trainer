@@ -20,7 +20,7 @@ const HomePage = () => {
             {showBabyForm && <BabyForm setShowBabyForm={setShowBabyForm}/>}
            <div className='nav-bar'>
               
-                <DropDown setShowBabyForm={setShowBabyForm} showBabyForm={showBabyForm}/>
+                <DropDown />
                 <LogoutButton/>           
            </div>
            <div className='loggging-div'>

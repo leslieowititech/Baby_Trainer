@@ -19,7 +19,7 @@ const BabyForm = ({ setShowBabyForm}) => {
        
         dispatch(babyActions.addBaby(name, birthday, user.id))
         history.push('/home')
-        setShowBabyForm(false)
+      
     }
     
 
@@ -48,4 +48,4 @@ const BabyForm = ({ setShowBabyForm}) => {
     )
 }
 
-export default BabyForm
+export default BabyForm;
