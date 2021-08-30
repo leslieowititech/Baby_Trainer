@@ -12,10 +12,7 @@ const ProfilePage = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
     const things = Object.values(useSelector(state => state.babies));
-    const babies = things.filter(things => things?.user_id === user.id);
-    const [name, setName] = useState('');
-    const [birthday, setBirthday] = useState(new Date());
-    const [errors, setErrors] = useState([]);
+    const babies = things.filter(things => things?.user_id === user.id);    
     const [editMode, setEditMode] = useState(false);
     
 
@@ -23,10 +20,7 @@ const ProfilePage = () => {
         e.preventDefault()
         const [myBaby] = babies.filter(el => el.id === id)
    
-          myBaby.name = name
-          myBaby.birthday = birthday
-
-        let updated = await dispatch(babyActions.editABaby(myBaby))
+        console.log(myBaby)
         
     }
 
@@ -34,14 +28,7 @@ const ProfilePage = () => {
         dispatch(babyActions.deleteABaby(id)) 
     }
 
-    // const editSpecificBaby = (e, name, birthday, id) => {
-    //     e.preventDefault();
-        
-    //     dispatch(babyActions.editABaby(name, birthday, id))
-    //     // data.then(item => console.log(item, 'testing')).catch(async (res) => {
-    //     //     console.log(res, 'resishere')
-    //     // })
-    // }
+    
 
     
 
@@ -80,8 +67,7 @@ const ProfilePage = () => {
                                 
                                     <form onSubmit={(e) => babyIamEditing(e, baby.id)} className='profile-edit-baby-form'>
                                         <input 
-                                            name='name'
-                                            placeholder={baby.name}
+                                            name='name'                                           
                                             defaultValue={baby.name} 
                                             className='input-fld'/>
                                         <input 
@@ -95,7 +81,7 @@ const ProfilePage = () => {
                             </div>  
                             <div className='baby-buttons'>
                                 <button className='util-btn edit-btn' onClick={editMode ? () => setEditMode(false) : () => setEditMode(true)}>&#9998;</button>
-                                <button onClick={() => deleteSpecificBaby(baby?.id)} className='util-btn delete-btn'>&#128465;</button>
+                                <button onClick={() => deleteSpecificBaby(baby, baby?.id)} className='util-btn delete-btn'>&#128465;</button>
                             </div>                         
                         </div>
                     ))}

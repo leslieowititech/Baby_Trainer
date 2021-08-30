@@ -57,16 +57,16 @@ const babyReducer = (state = initialState, action) => {
     }
 }
 
-export const editABaby = (name, birthday, id) => async (dispatch) => {
+export const editABaby = (baby, id) => async (dispatch) => {
+    console.log(id, 'test')
+    console.log(baby, 'baby_________')
     const response = await fetch(`/api/babies/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
-            name,
-            birthday
-        })
+            baby})
     })
-    console.log(response.ok === true)
+    // console.log(response.ok === true)
     if(response.ok){
         const item = await response.json();
         dispatch(editBaby(item));
