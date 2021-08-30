@@ -51,10 +51,12 @@ const ProfilePage = () => {
                                 <form onSubmit={(e) => editSpecificBaby(e,baby, baby.id)}>
                                     <input 
                                         name='name'
-                                        placeholder={baby.name}/>
+                                        placeholder={baby.name}
+                                        defaultValue={baby.name}/>
                                     <input 
                                         name='birthday'
-                                        type='date'/>
+                                        type='date'
+                                        defaultValue={baby.birthday}/>
                                     <button type='submit' onClick={editABaby}>Save</button>
                                 </form>
                             </div>  

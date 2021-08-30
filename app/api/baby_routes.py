@@ -25,6 +25,7 @@ def edit_a_baby(id):
     baby_to_update = Baby.query.get(id)
     if request.method == 'PUT':
         if form.validate_on_submit():
+            print(baby_to_update, '___________inif______________HERE')
             if baby_to_update and (baby_to_update.user_id == current_user.id):                
                 baby_to_update.name = form.name.data
                 baby_to_update.birthday = form.birthday.data

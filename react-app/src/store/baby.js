@@ -63,7 +63,7 @@ export const editABaby = (baby, id) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(baby)
     })
-
+    console.log(baby)
     if(response.ok){
         const item = await response.json();
         dispatch(editBaby(item));
