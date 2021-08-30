@@ -41,6 +41,7 @@ const AddBabyForm = () => {
                     type='text'
                     className='add-baby-input'
                     required
+                    placeholder={`Enter your baby's name here`}
                     />
             <input 
                     value={birthday}
