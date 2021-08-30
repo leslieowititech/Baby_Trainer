@@ -45,6 +45,7 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage/>
         </Route>
+       
         <ProtectedRoute path='/home'>
           <HomePage/>
         </ProtectedRoute>
