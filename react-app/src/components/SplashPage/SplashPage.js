@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-// import { useSelector } from 'react-redux';
-// import LoginFormModal from '../LoginFormModal';
+
 
 import { login } from '../../store/session';
+import LoginFormModal from '../LoginFormModal/LogInFormModal';
 import './SplashPage.css';
 
 const SplashPage = ()  => {
@@ -21,11 +21,8 @@ const SplashPage = ()  => {
         <div className='splash-page-container'>            
             <h1 className='splash-page-h1'>Welcome to baby Trainer!™</h1> 
             <ul>
-                <NavLink to='/login' exact={true} activeClassName='active'>
-                    <li className='splash-page-btn'>
-                            Login
-                    </li>
-                </NavLink>
+                
+                <LoginFormModal/>
                 <NavLink to='/sign-up' exact={true} activeClassName='active'>
                     <li className='splash-page-btn'>
                             Sign Up

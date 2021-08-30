@@ -33,19 +33,25 @@ const AddBabyForm = () => {
                     <li key={index}>{error}</li>
                 ))}
             </ul>
+            <h2 className='add-baby-title'>Welcome let's add your baby</h2>
             <input 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     name='name'
                     type='text'
+                    className='add-baby-input'
+                    required
+                    placeholder={`Enter your baby's name here`}
                     />
             <input 
                     value={birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                     name='birthday'
                     type='date'
+                    className='add-baby-input'
+                    required
                     />
-            <button type='submit'>Save</button>
+            <button type='submit' className='add-baby-save-btn add-baby-input'>Save</button>
         </form>
     )
 }
