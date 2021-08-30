@@ -78,4 +78,8 @@ export const addBaby = (name, birthday, id) => async (dispatch) => {
     }
 }
 
+export const deleteBaby = () => {
+    
+}
+
 export default babyReducer;
