@@ -12,6 +12,10 @@ const ProfilePage = () => {
     const things = Object.values(useSelector(state => state.babies));
     const babies = things.filter(things => things?.user_id === user.id);
 
+    const deleteSpecificBaby = (id) => {
+        dispatch(babyActions.deleteABaby(id)) 
+    }
+
     useEffect(() => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
@@ -39,7 +43,7 @@ const ProfilePage = () => {
                             </div>  
                             <div className='baby-buttons'>
                                 <button>Edit</button>
-                                <button>Delete</button>
+                                <button onClick={() => deleteSpecificBaby(baby.id)}>Delete</button>
                             </div>                         
                         </div>
                     ))}
