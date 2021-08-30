@@ -1,6 +1,7 @@
 const CREATE_BABY = 'babies/SET_BABY';
 const GET_BABY = 'babies/GET_BABY';
 const DELETE_BABY = 'babies/DELETE_BABY';
+const EDIT_BABY = 'babies/EDIT_BABY';
 
 
 const setBaby = (baby) => {
@@ -24,6 +25,13 @@ const deleteBaby = (id) => {
     }
 }
 
+const editBaby = (baby) => {
+    return {
+        type: EDIT_BABY,
+        baby
+    }
+}
+
 const initialState = { babies: null}
 
 const babyReducer = (state = initialState, action) => {
@@ -39,6 +47,11 @@ const babyReducer = (state = initialState, action) => {
         case DELETE_BABY:
              delete newState[action.id];
              return newState
+        case EDIT_BABY:
+            return {
+                ...state,
+                [action.baby.id]: action.baby
+            }
         default:
             return state
     }
@@ -98,6 +111,25 @@ export const deleteABaby = (id) => async (dispatch) => {
         return [`That didn't work please try again! :(`]
     }
 
+}
+
+export const editABaby = (data, id) => async dispatch => {
+    // console.log(data, 'data________________here')
+    const response = await fetch(`/api/babies/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: data.name,
+            birthday: data.birthday,
+            user_id: data.user_id
+        })
+    })
+    console.log(response, 'here_________response')
+    if(response.ok){
+        const baby = await response.json();
+        dispatch(editBaby(baby))
+        return baby
+    }
 }
 
 export default babyReducer;
