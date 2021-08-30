@@ -48,7 +48,9 @@
 .baby-info{
     /* border: 1px solid red; */
     width: 400px;
-    height: 80px;
+    /* height: max-content; */
+    min-height: 80px;
+    padding: 15px;
     display: flex;
     /* align-items: center; */
     flex-direction: column;
@@ -86,4 +88,19 @@
 .profile-edit-baby-form{
     display: flex;
     flex-direction: column;
+}
+
+.input-fld{
+    width: 90%;
+    height: 30px;
+    margin-left: 15px;
+    border-radius: 8px;
+    background-color: #C4C4C4;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.save-btn{
+    background-color: #F2C2C2;
+    padding: 5px;
 }

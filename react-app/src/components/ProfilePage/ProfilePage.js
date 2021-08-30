@@ -82,16 +82,14 @@ const ProfilePage = () => {
                                         <input 
                                             name='name'
                                             placeholder={baby.name}
-                                            // defaultValue={baby.name}                                     
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}/>
+                                            defaultValue={baby.name} 
+                                            className='input-fld'/>
                                         <input 
                                             name='birthday'
                                             type='date'
-                                            // defaultValue={baby.birthday}
-                                            value={birthday}
-                                            onChange={(e) => setBirthday(e.target.value)}/>
-                                        <button type='submit' >Save</button>
+                                            defaultValue={baby.birthday}                                          
+                                        className='input-fld'/>
+                                    <button type='submit' className='input-fld save-btn'>Save</button>
                                     </form>
                                 }
                             </div>  
