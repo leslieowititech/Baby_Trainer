@@ -117,6 +117,7 @@ export const addBaby = (name, birthday, id) => async (dispatch) => {
 }
 
 export const deleteABaby = (id) => async (dispatch) => {
+    console.log(id, 'id______testing')
     const response = await fetch(`/api/babies/${id}`, {
         method: 'DELETE',
     });

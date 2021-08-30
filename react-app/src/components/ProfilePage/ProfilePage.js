@@ -14,13 +14,17 @@ const ProfilePage = () => {
     const things = Object.values(useSelector(state => state.babies));
     const babies = things.filter(things => things?.user_id === user.id);    
     const [editMode, setEditMode] = useState(false);
+    const [name, setName] = useState('');
+    const [idtoEdit, setIdtoEdit] = useState(0)
+    // const [nametoEdit, setNametoEdit] = useState('')
     
 
     const babyIamEditing = async (e,id) => {
         e.preventDefault()
         const [myBaby] = babies.filter(el => el.id === id)
-   
-        console.log(myBaby)
+        console.log(myBaby, 'testing____________Here')
+
+        // await dispatch(babyActions.editABaby(payload,id))
         
     }
 
@@ -28,7 +32,15 @@ const ProfilePage = () => {
         dispatch(babyActions.deleteABaby(id)) 
     }
 
-    
+    const editButtonFn = (id) => {
+        if(editMode){
+           setEditMode(false)
+        }else{
+            setEditMode(true)
+        }
+
+        setIdtoEdit(id)
+    }
 
     
 
@@ -46,7 +58,7 @@ const ProfilePage = () => {
                 {user?.username}
             </div>
                 <div className='baby-title'>
-                    <h2>My Babies</h2>
+                    <h2 className='title-my-babies'> My Babies</h2>
                      
                 </div>
             <div className='user-babies-info'>
@@ -54,7 +66,7 @@ const ProfilePage = () => {
                     {babies?.map((baby, index) => (
                         <div key={baby.id} className='baby-item-details'>
                             <div className='baby-info'>
-                                {!editMode && 
+                                {
                                     <>
                                     <div className='info-item'>Baby name: {baby.name}</div>
                                     <div className='info-item'>Birthday: {baby.birthday}</div>
@@ -63,13 +75,16 @@ const ProfilePage = () => {
                                 {/* <ul>
                                     {errors?.map((err, index) => <li key={index}>{err}</li>)}
                                 </ul> */}
-                                {editMode && 
+                                {editMode &&  idtoEdit === baby.id &&
                                 
                                     <form onSubmit={(e) => babyIamEditing(e, baby.id)} className='profile-edit-baby-form'>
                                         <input 
                                             name='name'                                           
                                             defaultValue={baby.name} 
-                                            className='input-fld'/>
+                                            className='input-fld'
+                                            // value={name}
+                                            // onChange={(e) => setName(e.target.value)}
+                                            />
                                         <input 
                                             name='birthday'
                                             type='date'
@@ -80,8 +95,8 @@ const ProfilePage = () => {
                                 }
                             </div>  
                             <div className='baby-buttons'>
-                                <button className='util-btn edit-btn' onClick={editMode ? () => setEditMode(false) : () => setEditMode(true)}>&#9998;</button>
-                                <button onClick={() => deleteSpecificBaby(baby, baby?.id)} className='util-btn delete-btn'>&#128465;</button>
+                                <button className='util-btn edit-btn' onClick={() => editButtonFn(baby.id)}>&#9998;</button>
+                                <button onClick={() => deleteSpecificBaby(baby?.id)} className='util-btn delete-btn'>&#128465;</button>
                             </div>                         
                         </div>
                     ))}
