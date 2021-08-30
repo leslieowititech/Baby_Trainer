@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import {useHistory } from 'react-router-dom';
 
 import './BabyForm.css';
 import * as babyActions from '../../store/baby';
 
 
-const BabyForm = ({ setShowBabyForm}) => {
-    const history = useHistory()
+const BabyForm = () => {
+    
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const [name, setName] = useState('');
@@ -17,8 +16,8 @@ const BabyForm = ({ setShowBabyForm}) => {
     const handleSubmit = (e) => {
         e.preventDefault();   
        
-        dispatch(babyActions.addBaby(name, birthday, user.id))
-        history.push('/home')
+        dispatch(babyActions.addBaby(name, birthday, user.id));
+            
       
     }
     
