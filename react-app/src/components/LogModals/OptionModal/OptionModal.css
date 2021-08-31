@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid red; */
 }
 
 .option-modal-item{
@@ -31,4 +32,11 @@
     height: 60px;
     margin-bottom: 15px;
     /* overflow: hidden; */
+}
+
+.option-modal-logType{
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 30px;
+    
 }

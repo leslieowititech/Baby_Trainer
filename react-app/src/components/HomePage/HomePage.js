@@ -30,8 +30,8 @@ const HomePage = () => {
            </div>
            <div className='loggging-div'>                
                     <LogItemDiv title='Sleep' imgUrl={mooniconUrl}/>                  
-                    <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast'/>
-                    <LogItemDiv title='Diaper' imgUrl={diaperUrl} option1='Poo' option2='Pee'/>
+                    <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast' logType='Feed log'/>
+                    <LogItemDiv title='Diaper' imgUrl={diaperUrl} icon1={diaperUrl} icon2={diaperUrl} option1='Poo' option2='Pee' logType='Diaper Log'/>
            </div>
            <NavLink to='/users/profile'>
                 <button className='settings fas fa-cog'>⚙</button>

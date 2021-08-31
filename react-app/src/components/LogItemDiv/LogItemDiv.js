@@ -4,7 +4,7 @@ import './LogItemDiv.css';
 import { Modal } from '../../context/Modal';
 import OptionModal from '../LogModals/OptionModal/OptionModal';
 
-const LogItemDiv = ({title, imgUrl, option1, option2, icon1, icon2}) => {
+const LogItemDiv = ({title, imgUrl, option1, option2, icon1, icon2, logType}) => {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
@@ -18,7 +18,7 @@ const LogItemDiv = ({title, imgUrl, option1, option2, icon1, icon2}) => {
         </div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <OptionModal option1={option1} option2={option2} icon1={icon1} icon2={icon2}/>
+                <OptionModal option1={option1} option2={option2} icon1={icon1} icon2={icon2} logType={logType}/>
             </Modal>
         )}
         </>
