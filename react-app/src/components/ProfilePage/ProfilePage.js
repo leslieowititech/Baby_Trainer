@@ -30,6 +30,7 @@ const ProfilePage = () => {
     const editSpecificBaby = (e, id) => {
         e.preventDefault()
         dispatch(babyActions.editABaby(payload, id))
+        setEditMode(false)
     }
 
     useEffect(() => {
@@ -83,7 +84,10 @@ const ProfilePage = () => {
                                                 className='profile-page-form-input'
 
                                         />
-                                        <button type='submit'>Save</button>
+                                        <button 
+                                                type='submit'
+                                                // onClick={() => setEditMode(false)}
+                                                >Save</button>
                                     </form>
                                 }
 
