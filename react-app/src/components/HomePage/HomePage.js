@@ -5,11 +5,9 @@ import LogoutButton from '../auth/LogoutButton';
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
 
-
-
-
 import './HomePage.css';
 
+const moon = '/moon.png';
 
 const HomePage = () => {    
 
@@ -22,7 +20,7 @@ const HomePage = () => {
                 <LogoutButton/>           
            </div>
            <div className='loggging-div'>
-                <LogItemDiv title='Sleep'/>
+                <LogItemDiv title='Sleep' imgUrl={moon}/>
                 <LogItemDiv title='Feed'/>
                 <LogItemDiv title='Diaper'/>
            </div>

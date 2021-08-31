@@ -38,16 +38,23 @@ const babyReducer = (state = initialState, action) => {
     let newState= {...state};
     switch(action.type){
         case GET_BABY:
-            newState = { ...action.payload.babies};
-            // newState = action.payload.babies
+            // newState = { ...action.payload.babies};
+            // console.log(action.payload, '_____________________action.payload')
+            action.payload.babies.forEach(baby => {
+                newState[baby.id] = baby
+            });
             return newState
         case CREATE_BABY:
             newState[action.payload.baby?.id] = action.payload.baby
             return newState
-        case DELETE_BABY:
-             delete newState[action.id];
+        case DELETE_BABY: 
+        console.log(newState[action.babId], 'newState[action.babId]___________Here') 
+        console.log(newState, '_______________neewStateHere')  
+        console.log(action.babId, '_____________action.babIdHere')       
+             delete newState[action.babId];
              return newState
         case EDIT_BABY:
+            console.log(action)
             return {
                 ...state,
                 [action.baby.id]: action.baby
