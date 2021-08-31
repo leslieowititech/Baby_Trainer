@@ -6,12 +6,16 @@ const OptionModal = ({option1, option2, icon1, icon2}) => {
     return (
         <div className='option-modal-container'>
             <div className='option-modal-item'>
-                <img src={icon1} alt={icon1}/>
+                <div className='option-modal-icon-container'>
+                    <img src={icon1} alt={icon1} className='option-modal-icon-container'/>
+                </div>
                 {option1}
             </div>
             <span>or</span>
             <div className='option-modal-item'>
-                <img src={icon2} alt={icon2}/>
+                <div className='option-modal-icon-container'>
+                    <img src={icon2} alt={icon2} className='option-modal-image'/>
+                </div>
                 {option2}
             </div>
         </div>

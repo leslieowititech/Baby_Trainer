@@ -9,12 +9,12 @@ const LogItemDiv = ({title, imgUrl, option1, option2, icon1, icon2}) => {
     return (
         <>
         <div className='log-item' onClick={() => setShowModal(true)}>
-            <h2 className='log-item-title'>
-                {title}
-            </h2>
             <div className='icon-container '>
                 <img src={imgUrl} alt={imgUrl} className='icon-image'/>
             </div>
+            <h2 className='log-item-title'>
+                {title}
+            </h2>
         </div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>

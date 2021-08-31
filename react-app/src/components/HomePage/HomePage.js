@@ -15,7 +15,11 @@ const HomePage = () => {
      const {babyId } = useParams();
   
      // console.log(babyId, 'idhereee____________')
-     const mooniconUrl = 'https://i.pinimg.com/originals/aa/a7/0b/aaa70bf7eb3dd1b3011ad60c229f5fbd.jpg'
+     const mooniconUrl = 'https://image.flaticon.com/icons/png/512/702/702471.png';
+     const bottleUrl = 'https://image.flaticon.com/icons/png/512/4292/4292086.png';
+     const diaperUrl = 'https://image.flaticon.com/icons/png/512/2336/2336358.png';
+     const breastFeedUrl = 'https://image.flaticon.com/icons/png/512/4150/4150402.png';
+    
     return (
         <div className='home-page-container'>
           
@@ -26,8 +30,8 @@ const HomePage = () => {
            </div>
            <div className='loggging-div'>                
                     <LogItemDiv title='Sleep' imgUrl={mooniconUrl}/>                  
-                    <LogItemDiv  title='Feed' option1='Bottle' option2='Breast'/>
-                    <LogItemDiv title='Diaper' option1='Poo' option2='Pee'/>
+                    <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast'/>
+                    <LogItemDiv title='Diaper' imgUrl={diaperUrl} option1='Poo' option2='Pee'/>
            </div>
            <NavLink to='/users/profile'>
                 <button className='settings fas fa-cog'>⚙</button>
