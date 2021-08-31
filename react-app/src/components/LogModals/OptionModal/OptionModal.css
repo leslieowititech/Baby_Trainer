@@ -1,0 +1,15 @@
+.option-modal-container{
+    height: 350px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-modal-item{
+    /* border: 1px solid red; */
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    background-color: #CEE2DF;
+}
