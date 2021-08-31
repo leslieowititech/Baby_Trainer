@@ -1,5 +1,7 @@
 *{
     font-family: 'Epilogue', sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
 .log-item{
@@ -22,4 +24,12 @@
     border: 1px solid red;
     height: 50px;
     width: 50px;
+}
+
+.log-item-icon{
+    border: 1px solid green;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    /* height: 40px; */
 }
