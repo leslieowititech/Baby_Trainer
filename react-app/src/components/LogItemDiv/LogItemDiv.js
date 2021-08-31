@@ -12,8 +12,8 @@ const LogItemDiv = ({title, imgUrl, option1, option2, icon1, icon2}) => {
             <h2 className='log-item-title'>
                 {title}
             </h2>
-            <div className='icon'>
-                <img src={imgUrl} alt={imgUrl}/>
+            <div className='icon-container '>
+                <img src={imgUrl} alt={imgUrl} className='icon-image'/>
             </div>
         </div>
         {showModal && (

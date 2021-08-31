@@ -12,4 +12,7 @@
     height: 150px;
     border-radius: 8px;
     background-color: #CEE2DF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
