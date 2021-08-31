@@ -28,6 +28,8 @@
 
 .user-babies-info{
     display: flex;
+    justify-content: center;
+    align-items: center;
     /* border: 1px solid green; */
     width: 100%;
    
@@ -35,6 +37,8 @@
 
 .baby-item-details{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .baby-title{
@@ -43,6 +47,8 @@
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .baby-info{
@@ -57,6 +63,7 @@
     border-radius: 8px;
     background-color: #F5E4DC;
     justify-content: center;
+    /* align-items: center; */
   
 }
 
