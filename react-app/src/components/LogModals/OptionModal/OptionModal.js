@@ -9,15 +9,14 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
     const myRef = useRef(null)
 
     const handleClick = (e) => {
+        let classes;
         if (logType === 'Feed log'){
-            let classes = e.target.className;
-            setShowModal(true)
-          
-            console.log(classes.split(' '))
-            // console.log(e.target.className)
-            // console.log(myRef.current)
-            // console.log(e.target.defaultValue)
+            classes = e.target.className;
+            setShowModal(true)        
+           
 
+        } else if (logType === 'Diaper Log'){
+            
         }
     }
 
