@@ -94,7 +94,7 @@ export const addBaby = (name, birthday, id) => async (dispatch) => {
     const data = await response.json();
 
     if (response.ok) {
-         dispatch(setBaby(data))
+        await dispatch(setBaby(data))
         return response;
     } else if (response.status < 500) {
         // const data = await response.json();
@@ -131,7 +131,7 @@ export const editABaby = (data, id) => async dispatch => {
             user_id: data.user_id
         })
     })
-    console.log(response, 'here_________response')
+    // console.log(response, 'here_________response')
     if(response.ok){
         const baby = await response.json();
         dispatch(editBaby(baby))

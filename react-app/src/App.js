@@ -29,10 +29,7 @@ function App() {
 
   return (
     <BrowserRouter>     
-      <Switch>       
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>      
+      <Switch>     
         <Route path='/' exact={true} >
           <SplashPage/>
         </Route>       

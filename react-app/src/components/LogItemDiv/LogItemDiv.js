@@ -25,7 +25,7 @@ const LogItemDiv = ({title, imgUrl, option1, option2, icon1, icon2, logType}) =>
                                 option2={option2} 
                                 icon1={icon1} 
                                 icon2={icon2} 
-                                logType={logType}                                
+                                logType={logType}                                                              
                     />
                     
             </Modal>

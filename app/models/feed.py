@@ -5,8 +5,8 @@ class Feed(db.Model):
     __tablename__ = 'feeds'
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(100), nullable=True)
-    feed_time = db.Column(db.Date)
+    type = db.Column(db.String(100), nullable=False)
+    feed_time = db.Column(db.Date, nullable=False)
     amount = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     baby_id = db.Column(db.Integer, db.ForeignKey('babies.id'), nullable=False)

@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .babies import seed_babies, undo_babies
 from .diapers import seed_diapers, undo_diapers
+from .feeds import seed_feeds, undo_feeds
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -14,6 +15,7 @@ def seed():
     seed_users()
     seed_babies()
     seed_diapers()
+    seed_feeds()
     # Add other seed functions here
 
 
@@ -23,4 +25,5 @@ def undo():
     undo_users()
     undo_babies()
     undo_diapers()
+    undo_feeds()
     # Add other undo functions here

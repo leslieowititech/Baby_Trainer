@@ -12,6 +12,7 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
         if (logType === 'Feed log'){
             let classes = e.target.className;
             setShowModal(true)
+          
             console.log(classes.split(' '))
             // console.log(e.target.className)
             // console.log(myRef.current)
