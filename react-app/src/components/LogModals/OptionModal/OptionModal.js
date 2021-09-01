@@ -11,6 +11,7 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
     const handleClick = (e) => {
         if (logType === 'Feed log'){
             let classes = e.target.className;
+            setShowModal(true)
             console.log(classes.split(' '))
             // console.log(e.target.className)
             // console.log(myRef.current)
@@ -18,6 +19,10 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
 
         }
     }
+
+    
+        
+   
 
     return (
         <div className='option-modal-container'>
@@ -33,6 +38,11 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
                 </div>
                 {option1}
             </div>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <TimerModal/>
+                </Modal>
+            )}
             <span>or</span>
             <div 
                 className='option-modal-item'
