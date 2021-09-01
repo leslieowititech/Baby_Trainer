@@ -1,4 +1,4 @@
-from app.models import Diaper, Baby, db
+from app.models import Diaper, db
 from flask import Blueprint
 
 diaper_routes = Blueprint('diapers', __name__)
