@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 
 import { login } from '../../store/session';
 import LoginFormModal from '../LoginFormModal/LogInFormModal';
+import SignUpFormModal from '../LoginFormModal/SignUpFormModal';
 import './SplashPage.css';
 
 const SplashPage = ()  => {
@@ -23,11 +24,7 @@ const SplashPage = ()  => {
             <ul>
                 
                 <LoginFormModal/>
-                <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                    <li className='splash-page-btn'>
-                            Sign Up
-                    </li>
-                </NavLink>
+                <SignUpFormModal/>                
                 <li className='splash-page-btn demo-btn'>
                     <button onClick={demoLogin}>Demo Login</button>
                 </li>

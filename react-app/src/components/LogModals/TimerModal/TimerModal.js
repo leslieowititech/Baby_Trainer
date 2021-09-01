@@ -1,11 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
+import { useSelector, useDispatch } from 'react-redux';
 
-import './TimerModal.css'
+
+import './TimerModal.css';
+import { addAFeed } from '../../../store/feed';
 
 const TimerModal = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
+
     const playUrl = 'https://image.flaticon.com/icons/png/512/702/702148.png';
     const pauseUrl = 'https://image.flaticon.com/icons/png/512/2088/2088562.png';
+
+
 
     let url;
 
@@ -15,9 +23,7 @@ const TimerModal = () => {
         url = pauseUrl
     }else{
         url=playUrl
-    }
-
-    
+    }    
 
     const {
         seconds,
@@ -35,6 +41,15 @@ const TimerModal = () => {
 
     const handlePause = () => {
         setPlaySate(false) && pause()
+    }
+
+    // const payload = {
+    //     // feed_time='2017-09-05 19:45:28',
+    //     feed_time:
+    // }
+
+    const handleSave = () => {
+        dispatch(addAFeed())
     }
 
     return (
