@@ -45,17 +45,17 @@ const babyReducer = (state = initialState, action) => {
             });
             return newState
         case CREATE_BABY:
-            console.log(action.payload, '_____________addBaby')
+            // console.log(action.payload, '_____________addBaby')
             newState[action.payload?.id] = action.payload
             return newState
         case DELETE_BABY: 
-        console.log(newState[action.babId], 'newState[action.babId]___________Here') 
-        console.log(newState, '_______________neewStateHere')  
-        console.log(action.babId, '_____________action.babIdHere')       
+        // console.log(newState[action.babId], 'newState[action.babId]___________Here') 
+        // console.log(newState, '_______________neewStateHere')  
+        // console.log(action.babId, '_____________action.babIdHere')       
              delete newState[action.babId];
              return newState
         case EDIT_BABY:
-            console.log(action)
+            // console.log(action)
             return {
                 ...state,
                 [action.baby.id]: action.baby

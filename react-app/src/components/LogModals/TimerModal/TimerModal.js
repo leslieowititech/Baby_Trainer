@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import { useSelector, useDispatch } from 'react-redux';
+import {useParams} from 'react-router-dom';
 
 
 import './TimerModal.css';
@@ -8,7 +9,9 @@ import { addAFeed } from '../../../store/feed';
 
 const TimerModal = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user);
+    const {babyId} = useParams();
+    console.log(babyId,'________________babyId')
 
     const playUrl = 'https://image.flaticon.com/icons/png/512/702/702148.png';
     const pauseUrl = 'https://image.flaticon.com/icons/png/512/2088/2088562.png';
@@ -36,19 +39,23 @@ const TimerModal = () => {
     } = useStopwatch({ autoStart: true });
 
     const handlePlay = () => {
-        setPlaySate(true)  && start()      
+        if(babyId){
+
+            setPlaySate(true)  && start()      
+        }else{
+            alert('Please select a baby')
+        }
     }
 
     const handlePause = () => {
         setPlaySate(false) && pause()
     }
 
-    // const handleSave = (e) => {
-    //     const classes = e.targe
-    // }
+    
     const payload = {
         // feed_time='2017-09-05 19:45:28',
-        feed_time: new Date().toISOString()
+        feed_time: new Date().toISOString(),
+        user_id: user.id
     }
     // console.log(new Intl.DateTimeFormat('en'), '_________________time test')
     
