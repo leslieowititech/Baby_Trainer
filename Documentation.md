@@ -5,4 +5,4 @@ Useful websites I used to debug
 
 Technologies and Libraries I used
 
-1. 
+1. react-timer-hook
