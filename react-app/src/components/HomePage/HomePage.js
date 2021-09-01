@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useParams } from 'react-router';
 import LogoutButton from '../auth/LogoutButton';
-
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
 
@@ -12,9 +10,7 @@ import './HomePage.css';
 
 
 const HomePage = () => {    
-     const {babyId } = useParams();
-  
-     // console.log(babyId, 'idhereee____________')
+     
      const mooniconUrl = 'https://image.flaticon.com/icons/png/512/702/702471.png';
      const bottleUrl = 'https://image.flaticon.com/icons/png/512/4292/4292086.png';
      const diaperUrl = 'https://image.flaticon.com/icons/png/512/2336/2336358.png';

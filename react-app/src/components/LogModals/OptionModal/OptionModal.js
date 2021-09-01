@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import './OptionModal.css'
+import './OptionModal.css';
 
 const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
     return (
