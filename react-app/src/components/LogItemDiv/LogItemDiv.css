@@ -1,5 +1,7 @@
 *{
     font-family: 'Epilogue', sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
 .log-item{
@@ -9,17 +11,43 @@
     border-radius: 8px;
     background-color: #CEE2DF;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
 }
 
 .log-item-title{
     font-size: medium;
-    position: relative;
-    left: 90px;
-    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    height: 80px;
+    width: 80px;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 
-.icon{
-    border: 1px solid red;
-    height: 50px;
-    width: 50px;
+.icon-container{
+    /* border: 1px solid red; */
+    height: 80px;
+    width: 80px;
+    border-radius: 8px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.log-item-icon{
+    border: 1px solid green;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    /* height: 40px; */
+}
+
+.icon-image{
+    max-width: 100%;
+    
+   
 }

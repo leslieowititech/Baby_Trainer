@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import AddBabyFormModal from '../LoginFormModal';
 import * as babyActions from '../../store/baby';
@@ -37,7 +38,9 @@ const DropDown = () => {
             
                 <div className='dropdown-items'>
                     {babies.map(baby => (
-                        <li key={baby.id} className='drop-down-list-item'>{baby.name}</li>
+                        <NavLink key={baby.id} to={`/babies/${baby.id}`}>
+                            <li className='drop-down-list-item'>{baby.name}</li>
+                        </NavLink>
                     ))}                
                 <AddBabyFormModal />
                 </div>

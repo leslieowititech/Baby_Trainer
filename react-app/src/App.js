@@ -29,28 +29,21 @@ function App() {
 
   return (
     <BrowserRouter>     
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
+      <Switch>       
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        {/* <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute> */}
+        </Route>      
         <Route path='/' exact={true} >
           <SplashPage/>
-        </Route>
-       
+        </Route>       
         <ProtectedRoute path='/home'>
           <HomePage/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/profile' exact={true}>
           <ProfilePage/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/babies/:babyId'>
+          <HomePage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
