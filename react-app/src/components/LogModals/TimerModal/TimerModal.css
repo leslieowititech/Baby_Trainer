@@ -1,5 +1,35 @@
 .timer-modal-container{
-    border: 1px solid red;
-    height: 100px;
+    min-height: 300px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    padding: 15px;
+}
+
+.timer-modal-image-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-modal-image{
+    width: 40%;
+    display: block;
+}
+
+.timer-modal-controls{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.timer-modal-btn{
+    /* border: 1px solid red; */
+    background: none;
     width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
 }
