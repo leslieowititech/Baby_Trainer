@@ -23,7 +23,7 @@ def edit_a_baby(id):
     form = BabyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     baby_to_update = Baby.query.get(id)
-    print(form.data, 'checking backend______________________________Here')
+    # print(form.data, 'checking backend______________________________Here')
     if request.method == 'PUT':
         if form.validate_on_submit():
             if baby_to_update and (baby_to_update.user_id == current_user.id):                
