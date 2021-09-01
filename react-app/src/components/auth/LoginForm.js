@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import { useHistory } from 'react-router';
 import './LoginForm.css'
 
 const LoginForm = () => {
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,6 +20,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+    history.push('/home')
   };
 
   const updateEmail = (e) => {

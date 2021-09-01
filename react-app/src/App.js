@@ -33,13 +33,13 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage/>
         </Route>       
-        <ProtectedRoute path='/home'>
+        <ProtectedRoute path='/home' exact={true}>
           <HomePage/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/profile' exact={true}>
           <ProfilePage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/babies/:babyId'>
+        <ProtectedRoute path='/babies/:babyId' exact={true}>
           <HomePage />
         </ProtectedRoute>
       </Switch>

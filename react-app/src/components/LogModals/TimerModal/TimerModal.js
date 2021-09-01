@@ -43,14 +43,15 @@ const TimerModal = () => {
         setPlaySate(false) && pause()
     }
 
-    // const payload = {
-    //     // feed_time='2017-09-05 19:45:28',
-    //     feed_time:
+    // const handleSave = (e) => {
+    //     const classes = e.targe
     // }
-
-    const handleSave = () => {
-        dispatch(addAFeed())
+    const payload = {
+        // feed_time='2017-09-05 19:45:28',
+        feed_time: new Date().toISOString()
     }
+    // console.log(new Intl.DateTimeFormat('en'), '_________________time test')
+    
 
     return (
         <div className='timer-modal-container'>
@@ -63,7 +64,7 @@ const TimerModal = () => {
                         <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
                     </div>
                     <div className='timer-modal-controls'>
-                    <button onClick={reset} className='timer-modal-btn'>Reset</button>
+                        <button onClick={reset} className='timer-modal-btn'>Reset</button>
                         <button className='timer-modal-btn'>Save</button>
                     </div>                                     
                 </div>
