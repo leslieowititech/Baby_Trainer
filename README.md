@@ -16,10 +16,10 @@ Baby Trainer is containerized in Docker and uses gihub action to atomatically pu
 
 The bulk of the app is build using vaniilla React and Redux on the front end. The charts feature and the timer feature that visuallize and record feed dta respectively were implemented using the third party libraries.
 
-# React-Time-Hook
+# React-Timer-Hook
 The react-timer-hook is awesome at handling time related loging and manipulation. The documentation on this library is very short and to the point and the functionality is very user friendly to parse. I found that this library lent it;'s self very well to my timer component that visually records as you time how long your baby fed for.
 
-#Recharts
+# Recharts
 Recharts in my opinion is by far the best library out there that I have come across and the documentation on it very extensive and well written. There are a lot of various graphs, charts and other data visualisation tools on it that are very flexible. I love playing around with its functionality and implemented my charts feature using it.
  
 
