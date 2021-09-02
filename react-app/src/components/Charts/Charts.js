@@ -50,9 +50,9 @@ const Charts = () => {
             <h1>Baby Name</h1>
             <div className='charts-info'>
                 <div className='chart-btns'>
-                    <button className='chart-btn'>Diaper</button>
+                    {/* <button className='chart-btn'>Diaper</button> */}
                     <button className='chart-btn' onClick={handleShowFeed}>Feeds</button>
-                    <button className='chart-btn'>Sleep</button>
+                    {/* <button className='chart-btn'>Sleep</button> */}
                 </div>
                 <div className='chart'>
                     {showChart && (

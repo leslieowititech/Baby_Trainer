@@ -77,4 +77,5 @@ def edit_a_diaper(id):
         db.session.commit()
 
         return diaper_to_edit.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}
  

@@ -1,4 +1,4 @@
-import { deleteAFeed } from "./feed";
+
 
 const CREATE_DIAPER = 'diapers/CREATE_DIAPER';
 const GET_DIAPER = 'diapers/GET_DIAPER';
@@ -103,7 +103,8 @@ export const addADiaper = (payload) => async dispatch => {
 }
 
 export const editADiaper = (payload, id) => async dispatch => {
-    const response = await fetch(`/api/feeds/${id}`, {
+    console.log(payload, '___________-editdiaperPayload')
+    const response = await fetch(`/api/diapers/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
