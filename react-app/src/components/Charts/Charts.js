@@ -66,6 +66,9 @@ const Charts = () => {
                     )}
                 </div>
             </div>
+            <NavLink to='/users/profile'>
+                <button className='settings fas fa-cog'>⚙</button>
+            </NavLink>
         </div>
     )
 }
