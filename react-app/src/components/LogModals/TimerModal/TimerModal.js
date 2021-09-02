@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import { useSelector, useDispatch } from 'react-redux';
+import {useParams} from 'react-router-dom';
 
 
 import './TimerModal.css';
 import { addAFeed } from '../../../store/feed';
 
-const TimerModal = () => {
+const TimerModal = ({type}) => {
+    console.log(type, 'type_______')
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user);
+    const {babyId} = useParams();
+    // console.log(babyId,'________________babyId')
 
     const playUrl = 'https://image.flaticon.com/icons/png/512/702/702148.png';
     const pauseUrl = 'https://image.flaticon.com/icons/png/512/2088/2088562.png';
@@ -18,6 +22,7 @@ const TimerModal = () => {
     let url;
 
     const [playState, setPlaySate] = useState(false);
+    
 
     if(playState){
         url = pauseUrl
@@ -30,27 +35,61 @@ const TimerModal = () => {
         minutes,
         hours,
         days,
+        // isRunning,
         start,
         pause,
         reset,
     } = useStopwatch({ autoStart: true });
 
     const handlePlay = () => {
-        setPlaySate(true)  && start()      
+        if(babyId){
+
+            setPlaySate(true) 
+            start()      
+        }else{
+            alert('Please select a baby')
+        }
+    }
+
+    const getTotalTimeForFeed = () => {
+        let totalMinutes = 0;
+        if(seconds > 0) {
+            let mins = seconds / 60
+            totalMinutes = totalMinutes + mins
+        }
+        if(minutes > 0){          
+            totalMinutes = totalMinutes + minutes
+        }
+        if(hours > 0){
+            let mins = hours * 60
+            totalMinutes = totalMinutes + mins
+        }
+
+        return totalMinutes;
     }
 
     const handlePause = () => {
-        setPlaySate(false) && pause()
+        setPlaySate(false) 
+        pause()
     }
 
-    // const handleSave = (e) => {
-    //     const classes = e.targe
-    // }
+    
     const payload = {
         // feed_time='2017-09-05 19:45:28',
-        feed_time: new Date().toISOString()
+        feed_time: '2017-09-05 19:45:28',
+        user_id: user.id,
+        baby_id: +babyId,
+        amount: getTotalTimeForFeed(),
+        type
     }
-    // console.log(new Intl.DateTimeFormat('en'), '_________________time test')
+
+    const handleSave = () => {
+        pause()
+        dispatch(addAFeed(payload))
+    }
+
+    
+   
     
 
     return (
@@ -65,7 +104,7 @@ const TimerModal = () => {
                     </div>
                     <div className='timer-modal-controls'>
                         <button onClick={reset} className='timer-modal-btn'>Reset</button>
-                        <button className='timer-modal-btn'>Save</button>
+                        <button className='timer-modal-btn' onClick={handleSave}>Save</button>
                     </div>                                     
                 </div>
 

@@ -6,6 +6,17 @@ from app.forms import FeedForm
 feed_routes = Blueprint('feeds', __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
 @feed_routes.route('/')
 def get_all_feeds():
     feeds = Feed.query.all()
@@ -42,8 +53,8 @@ def create_a_feed():
 
         db.session.add(new_feed)
         db.session.commit()
-        return {'Feed': 'Feed has been logged'}
-    return {'errors': 'something went wrong'}
+        return new_feed.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 @feed_routes.route('/<int:id>', methods=['DELETE'])
 def delete_a_feed(id):
@@ -66,3 +77,5 @@ def edit_a_feed(id):
 
         db.session.add(feed_to_update)
         db.session.commit()
+
+        return feed_to_update.to_dict()

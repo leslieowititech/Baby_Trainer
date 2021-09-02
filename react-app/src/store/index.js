@@ -7,7 +7,7 @@ import feedReducer from './feed';
 const rootReducer = combineReducers({
   session,
   babies: babyReducer,
-  feedReducer
+  feeds: feedReducer
 });
 
 
