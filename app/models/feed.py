@@ -1,13 +1,17 @@
 from .db import db
+from sqlalchemy.ext.declarative import declarative_base
+import datetime
+
+Base = declarative_base()
 
 
-class Feed(db.Model):
+class Feed(db.Model, Base):
     __tablename__ = 'feeds'
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(100), nullable=False)
-    feed_time = db.Column(db.Date, nullable=False)
-    amount = db.Column(db.Integer)
+    feed_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    amount = db.Column(db.Float)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     baby_id = db.Column(db.Integer, db.ForeignKey('babies.id'), nullable=False)
     chart_relationship = db.relationship('Chart')

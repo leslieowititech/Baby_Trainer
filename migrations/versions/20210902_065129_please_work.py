@@ -1,8 +1,8 @@
-"""Made some changes to diaper model
+"""please work
 
-Revision ID: 360fcd107731
+Revision ID: 2c872b1d2e30
 Revises: ffdc0a98111c
-Create Date: 2021-09-01 13:41:00.105219
+Create Date: 2021-09-02 06:51:29.841522
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '360fcd107731'
+revision = '2c872b1d2e30'
 down_revision = 'ffdc0a98111c'
 branch_labels = None
 depends_on = None
@@ -39,8 +39,8 @@ def upgrade():
     op.create_table('feeds',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=100), nullable=False),
-    sa.Column('feed_time', sa.Date(), nullable=False),
-    sa.Column('amount', sa.Integer(), nullable=True),
+    sa.Column('feed_time', sa.DateTime(), nullable=True),
+    sa.Column('amount', sa.Float(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('baby_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['baby_id'], ['babies.id'], ),

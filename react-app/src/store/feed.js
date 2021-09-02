@@ -43,24 +43,27 @@ const feedReducer = ( state = initialState, action) =>  {
         case DELETE_FEED:
         case EDIT_FEED:
         case CREATE_FEED:
+            console.log(action, '________________testingCreateFeeds')
+            return newState
         default:
             return state
     }
 }
 
 
-export const addAFeed = (type, feed_time, amount, user_id, baby_id) => async (dispatch) => {
+export const addAFeed = (payload) => async (dispatch) => {
+    console.log(payload, '___________________store')
     const response = await fetch('/api/feeds/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-                type,
-                feed_time,
-                amount,
-                user_id,
-                baby_id
+                type: payload.type,
+                feed_time: payload.feed_time,
+                amount: payload.amount,
+                user_id: payload.user_id,
+                baby_id: payload.baby_id
         })
     })
 
