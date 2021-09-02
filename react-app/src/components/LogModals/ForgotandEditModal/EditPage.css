@@ -40,3 +40,22 @@
     /* border: 1px solid yellow; */
     width: 100%;
 }
+
+.edit-page-form-input{
+    background-color: #C4C4C4;
+    height: 30px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.edit-page-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #C1DDD8;
+    height: 100px;
+    width: 250px;
+    border-radius: 8px;
+
+}

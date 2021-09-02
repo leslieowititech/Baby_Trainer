@@ -47,6 +47,10 @@ const feedReducer = ( state = initialState, action) =>  {
             delete newState[action.payload];
             return newState
         case EDIT_FEED:
+            console.log(action, '_________EditStore')
+           return  {  ...state,
+                [action.payload.id]: action.payload
+            }
         case CREATE_FEED:
             // console.log(action, '________________testingCreateFeeds')
             newState[action.payload?.id] = action.payload
@@ -56,7 +60,25 @@ const feedReducer = ( state = initialState, action) =>  {
     }
 }
 
+export const editAFeed = (data, id) => async dispatch => {
+    const response = await fetch(`/api/feeds/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            type: data.type,
+            feed_time: data.feed_time,
+            amount: data.amount,
+            user_id: data.user_id,
+            baby_id: data.baby_id
+        })
+    })
 
+    if(response.ok){
+        const feed = await response.json()
+        dispatch(editFeed(feed))
+        return feed
+    }
+}
 
 export const addAFeed = (payload) => async (dispatch) => {
     // console.log(payload, '___________________store')

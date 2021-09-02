@@ -1,3 +1,5 @@
+import { deleteAFeed } from "./feed";
+
 const CREATE_DIAPER = 'diapers/CREATE_DIAPER';
 const GET_DIAPER = 'diapers/GET_DIAPER';
 const DELETE_DIAPER = 'diapers/DELETE_DIAPER';
@@ -38,12 +40,14 @@ const diaperReducer = (state = initialState, action) => {
 
     switch(action.type){
         case GET_DIAPER:
-            console.log(action.payload.diapers, '____________diaperAction')
+            // console.log(action.payload.diapers, '____________diaperAction')
             action.payload.diapers.forEach(diaper => {
                 newState[diaper.id] = diaper
             });
             return newState
         case DELETE_DIAPER:
+            delete newState[action.payload];
+            return newState
         case CREATE_DIAPER:
         case EDIT_DIAPER:
         default:
@@ -62,6 +66,16 @@ export const getAllDiapers = () => async dispatch => {
         const data = await response.json();
         dispatch(getDiaper(data));
         return response
+    }
+}
+
+export const deleteADiaper = (id) => async dispatch => {
+    const response = await fetch(`/api/diapers/${id}`, {
+        method: 'DELETE',
+    })
+
+    if(response.ok){
+        await dispatch(deleteDiaper(id))
     }
 }
 

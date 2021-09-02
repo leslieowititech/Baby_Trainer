@@ -25,4 +25,4 @@ def delete_a_specific_diaper(id):
 
     db.session.delete(diaper)
     db.session.commit()
-    return {'Diaper record deleted'}
+    return {'Diaper': 'record deleted'}
