@@ -82,7 +82,43 @@ export const deleteADiaper = (id) => async dispatch => {
 }
 
 export const addADiaper = (payload) => async dispatch => {
-    const response = await fetch(`/api/diapers/create`)
+    const response = await fetch(`/api/diapers/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            type: payload.type,
+            change_time: payload.change_time,
+            user_id: payload.user_id,
+            baby_id: payload.baby_id
+        })
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(setDiaper(data))
+        return response
+    }
+}
+
+export const editADiaper = (payload, id) => async dispatch => {
+    const response = await fetch(`/api/feeds/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            type: payload.type,
+            change_time: payload.change_time,
+            user_id: payload.user_id,
+            baby_id: payload.baby_id
+        })
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(editDiaper(data))
+        return data
+    }
 }
 
 
