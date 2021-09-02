@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 import LogoutButton from '../../auth/LogoutButton';
 // import { findBabies } from '../../../store/baby';
 import { getFeeds } from '../../../store/feed';
 import { deleteAFeed } from '../../../store/feed';
 import { editAFeed } from '../../../store/feed';
-import { getAllDiapers } from '../../../store/diaper';
-import { deleteADiaper } from '../../../store/diaper';
-import { editADiaper } from '../../../store/diaper';
+// import { getAllDiapers } from '../../../store/diaper';
+// import { deleteADiaper } from '../../../store/diaper';
+// import { editADiaper } from '../../../store/diaper';
 // import EditPageDropDown from '../../BabyDropDown/EditPageDropDown';
 import './EditPage.css';
 
 const EditPage = () => {
-    const { babyId } = useParams();
+    // const { babyId } = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const feeds = useSelector(state => state.feeds);
     const diapers = useSelector(state => state.diapers);
-    const babies = useSelector(state => state.babies);
+    // const babies = useSelector(state => state.babies);
    
     
     const feedData = Object.values(feeds);
@@ -32,10 +32,10 @@ const EditPage = () => {
         diaperData.pop()
     }
     
-    const babyData = Object.values(babies);
+    // const babyData = Object.values(babies);
     //For Feeed
     const [showFeedData, setShowFeedData ] = useState(false);
-    const [showDiaperData, setShowDiaperData] = useState(false); 
+    // const [showDiaperData, setShowDiaperData] = useState(false); 
     const [amount, setAmount] = useState(0);
     const [type, setType] = useState('')
     const [editMode, setEditMode] = useState(false);
