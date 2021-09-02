@@ -36,7 +36,10 @@ const HomePage = () => {
            </div>
            <NavLink to='/users/profile'>
                 <button className='settings fas fa-cog'>⚙</button>
-           </NavLink>           
+           </NavLink>  
+           <NavLink to='/logs/edit'>
+                forgot/edit a log?
+          </NavLink>         
         </div>
     )
 }
