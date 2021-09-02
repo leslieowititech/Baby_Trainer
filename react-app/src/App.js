@@ -46,6 +46,9 @@ function App() {
         <ProtectedRoute path='/babies/view/charts' exact={true}>
           <Charts/>
         </ProtectedRoute>
+        <ProtectedRoute path='/view/chart/:babyId'>
+            <Charts/>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

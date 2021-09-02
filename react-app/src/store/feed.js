@@ -38,7 +38,10 @@ const feedReducer = ( state = initialState, action) =>  {
     let newState = {...state}
     switch(action.type){
         case GET_FEED:
-            console.log(action.payload, '_____________testingGetFeeds')
+            // console.log(action.payload.feeds, '_____________testingGetFeeds')
+            action.payload.feeds.forEach(feed => {
+                newState[feed.id] = feed
+            }) 
             return newState
         case DELETE_FEED:
         case EDIT_FEED:

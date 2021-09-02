@@ -4,3 +4,38 @@
     align-items: center;
     justify-content: center;
 }
+
+.chart{
+    /* border: 1px solid red; */
+    height: 500px;
+    width: 900px;
+    background-color: #F5EDD7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.charts-info{
+    display: flex;
+    margin-top: 5%;
+
+}
+
+.chart-btns{
+    height: 500px;
+    /* border: 1px solid blue; */
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.chart-btn{
+    background: none;
+    height: 80px;
+    width: 80px;
+    background-color: #CEE2DF;
+    border-radius: 8px;
+}

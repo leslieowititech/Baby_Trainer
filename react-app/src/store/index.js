@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import babyReducer from './baby';
 import feedReducer from './feed';
+import diaperReducer from './diaper';
 
 const rootReducer = combineReducers({
   session,
   babies: babyReducer,
-  feeds: feedReducer
+  feeds: feedReducer,
+  diapers: diaperReducer
 });
 
 
