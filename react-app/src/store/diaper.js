@@ -49,6 +49,8 @@ const diaperReducer = (state = initialState, action) => {
             delete newState[action.payload];
             return newState
         case CREATE_DIAPER:
+            newState[action.payload.id] = action.payload
+            return newState
         case EDIT_DIAPER:
         default:
             return newState
@@ -77,6 +79,10 @@ export const deleteADiaper = (id) => async dispatch => {
     if(response.ok){
         await dispatch(deleteDiaper(id))
     }
+}
+
+export const addADiaper = (payload) => async dispatch => {
+    const response = await fetch(`/api/diapers/create`)
 }
 
 
