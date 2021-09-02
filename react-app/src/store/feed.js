@@ -44,6 +44,8 @@ const feedReducer = ( state = initialState, action) =>  {
             }) 
             return newState
         case DELETE_FEED:
+            delete newState[action.payload];
+            return newState
         case EDIT_FEED:
         case CREATE_FEED:
             // console.log(action, '________________testingCreateFeeds')
@@ -89,6 +91,16 @@ export const getFeeds = () => async dispatch => {
         const data = await response.json();
         dispatch(getFeed(data))
         return response
+    }
+}
+
+export const deleteAFeed = (id) => async (dispatch) => {
+    const response = await fetch(`/api/feeds/${id}`, {
+        method: 'DELETE',
+    })
+
+    if(response.ok){
+        await dispatch(deleteFeed(id))
     }
 }
  

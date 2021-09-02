@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import LogoutButton from '../../auth/LogoutButton';
 // import { findBabies } from '../../../store/baby';
 import { getFeeds } from '../../../store/feed';
+import { deleteAFeed } from '../../../store/feed';
 import { getAllDiapers } from '../../../store/diaper';
 import EditPageDropDown from '../../BabyDropDown/EditPageDropDown';
 import './EditPage.css';
@@ -33,7 +34,9 @@ const EditPage = () => {
     const [showDiaperData, setShowDiaperData] = useState(false);
 
     
-    
+    const deleteSpecificFeed = (id) => {
+        dispatch(deleteAFeed(id))
+    }
 
     useEffect(() => {
         dispatch(getFeeds())
@@ -43,7 +46,7 @@ const EditPage = () => {
     },[dispatch])
     // useEffect(() => {
     //     dispatch(findBabies())
-    // },[dispatch])
+    // },[dispatch]) 
     return (
         <div className='edit-page-container'>
             <div className='nav-bar'>
@@ -67,7 +70,9 @@ const EditPage = () => {
                                 </div>
                                 <div >
                                     <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onClick={() => deleteSpecificFeed(feed.id)} 
+                                           className='util-btn delete-btn'
+                                    >Delete</button>
                                 </div>
                             </div>
                         ))}
