@@ -28,6 +28,6 @@ I utilised Figma's design tools to wireframe my app before I begun building out 
  # Backend Overview
  For the backend I wrote out all my route logic in Blueprits and utilised maintained a similar output for all my endpoints using decorators and all this was done in flask. I normalised my data as mych as posible in the backend to minimise too much nesting when trying to access my data in the fron end.
  
- #PostggreSQL
+ ## PostggreSQL
  Locally I used PostgreSQL to seed and test my data. The initial set-up of my database I did using raw SQL but from then on I utilised alembic to manage my data. I also want to give a mention to Postman. This tool was very helpful when testing my route logic before making ajax call to my store in the frontend.
 
