@@ -38,6 +38,11 @@ const diaperReducer = (state = initialState, action) => {
 
     switch(action.type){
         case GET_DIAPER:
+            console.log(action.payload.diapers, '____________diaperAction')
+            action.payload.diapers.forEach(diaper => {
+                newState[diaper.id] = diaper
+            });
+            return newState
         case DELETE_DIAPER:
         case CREATE_DIAPER:
         case EDIT_DIAPER:

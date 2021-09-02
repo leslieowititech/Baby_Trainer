@@ -22,10 +22,15 @@ const EditPage = () => {
         feedData.pop()
         
     }
-    console.log(babyId, '_______________babyId')
-    const babyData = Object.values(babies)
+    const diaperData = Object.values(diapers);  
+    if(diaperData){
+        diaperData.pop()
+    }
+    
+    const babyData = Object.values(babies);
 
     const [showFeedData, setShowFeedData ] = useState(false);
+    const [showDiaperData, setShowDiaperData] = useState(false);
 
     
     
@@ -47,9 +52,9 @@ const EditPage = () => {
                 <LogoutButton />
             </div>
             <div className='edit-page-btns'>
-                <button className='chart-btn edit-page-btn'>Sleep</button>
-                <button className='chart-btn edit-page-btn' onClick={() => setShowFeedData(true)}>Feed</button>
-                <button className='chart-btn edit-page-btn'>Diaper</button>
+                <button className='chart-btn edit-page-btn'>Sleep</button> 
+                <button className='chart-btn edit-page-btn' onClick={showFeedData ? () => setShowFeedData(false) : () => setShowFeedData(true)}>Feed</button>
+                <button className='chart-btn edit-page-btn' onClick={showDiaperData ? () => setShowDiaperData(false) : () => setShowDiaperData(true)}>Diaper</button>
             </div>
                 {showFeedData && 
                 
@@ -67,6 +72,22 @@ const EditPage = () => {
                             </div>
                         ))}
                     </div>
+                }
+                {showDiaperData && 
+                <div className='edit-data'>
+                    {diaperData.map(diaper => (
+                        <div className='data-container' key={diaper.id} >
+                            <div className='data-item'>
+                                <div>{`Diaper change time: ${diaper.change_time}`}</div>
+                                <div>{`Type: ${diaper.type}`}</div>
+                            </div>
+                            <div >
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
                 }
           
         </div>
