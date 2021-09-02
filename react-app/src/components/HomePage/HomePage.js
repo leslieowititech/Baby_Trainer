@@ -36,7 +36,7 @@ const HomePage = () => {
            </div>
            <NavLink to='/users/profile'>
                 <button className='settings fas fa-cog'>⚙</button>
-           </NavLink>
+           </NavLink>           
         </div>
     )
 }
