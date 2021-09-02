@@ -43,7 +43,8 @@ const feedReducer = ( state = initialState, action) =>  {
         case DELETE_FEED:
         case EDIT_FEED:
         case CREATE_FEED:
-            console.log(action, '________________testingCreateFeeds')
+            // console.log(action, '________________testingCreateFeeds')
+            newState[action.payload?.id] = action.payload
             return newState
         default:
             return state
@@ -51,8 +52,9 @@ const feedReducer = ( state = initialState, action) =>  {
 }
 
 
+
 export const addAFeed = (payload) => async (dispatch) => {
-    console.log(payload, '___________________store')
+    // console.log(payload, '___________________store')
     const response = await fetch('/api/feeds/create', {
         method: 'POST',
         headers: {

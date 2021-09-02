@@ -35,6 +35,7 @@ const TimerModal = ({type}) => {
         minutes,
         hours,
         days,
+        // isRunning,
         start,
         pause,
         reset,
