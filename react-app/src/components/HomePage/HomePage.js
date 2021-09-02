@@ -29,6 +29,11 @@ const HomePage = () => {
                     <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast' logType='Feed log'/>
                     <LogItemDiv title='Diaper' imgUrl={diaperUrl} icon1={diaperUrl} icon2={diaperUrl} option1='Poo' option2='Pee' logType='Diaper Log'/>
            </div>
+           <div className='view-charts-btn-div'>
+               <NavLink to='/babies/view/charts'>
+                    <button className='view-charts-btn'>View Charts</button>
+               </NavLink>
+           </div>
            <NavLink to='/users/profile'>
                 <button className='settings fas fa-cog'>⚙</button>
            </NavLink>

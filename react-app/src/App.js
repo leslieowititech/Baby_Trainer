@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage/SplashPage';
 import HomePage from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import Charts from './components/Charts/Charts';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +42,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/babies/:babyId' exact={true}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/babies/view/charts' exact={true}>
+          <Charts/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
