@@ -12,6 +12,7 @@ import SplashPage from './components/SplashPage/SplashPage';
 import HomePage from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import Charts from './components/Charts/Charts';
+import EditPage from './components/LogModals/ForgotandEditModal/EditPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,9 +47,15 @@ function App() {
         <ProtectedRoute path='/babies/view/charts' exact={true}>
           <Charts/>
         </ProtectedRoute>
-        <ProtectedRoute path='/view/chart/:babyId'>
+        <ProtectedRoute path='/view/chart/:babyId' exact={true}>
             <Charts/>
         </ProtectedRoute>
+        <ProtectedRoute to='/logs/edit' exact={true}>
+            <EditPage/>
+        </ProtectedRoute>
+        {/* <ProtectedRoute to='/edit/:babyId' exact={true}>
+            <EditPage/>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

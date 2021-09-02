@@ -61,7 +61,8 @@ def delete_a_feed(id):
     feed_to_delete = Feed.query.get(id)
     db.session.delete(feed_to_delete)
     db.session.commit()
-
+    return {'feed': 'feed deleted'}
+    
 
 @feed_routes.route('/<int:id>', methods=['PUT'])
 def edit_a_feed(id):
