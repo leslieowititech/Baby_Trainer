@@ -6,7 +6,6 @@ Link to [Live site](https://baby-trainer.herokuapp.com/)
 
 ## Baby Trainer at a glance
 
-![Feed_flow_logs](	https://mir-s3-cdn-cf.behance.net/project_modules/disp/674f04126687771.6132389abe68a.png)
 
 Baby Trainer is a fullstack app that uses a Flask backend and React on the front end.
 
@@ -28,6 +27,9 @@ Recharts in my opinion is by far the best library out there that I have come acr
 
 ## Figma
 I utilised Figma's design tools to wireframe my app before I begun building out my components. I found this practice to be very helpful in visualising the amount of work building the app will approximately take and what kind of tools do I want to build from scratch and where good third party libraries if available can be utilised.
+
+
+![Feed_flow_logs](	https://mir-s3-cdn-cf.behance.net/project_modules/disp/674f04126687771.6132389abe68a.png)
  
  # Backend Overview
  For the backend I wrote out all my route logic in Blueprits and utilised maintained a similar output for all my endpoints using decorators and all this was done in flask. I normalised my data as mych as posible in the backend to minimise too much nesting when trying to access my data in the fron end.
