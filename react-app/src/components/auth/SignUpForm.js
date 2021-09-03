@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 import { signUp } from '../../store/session';
 import './SignUpForm.css';
@@ -13,6 +14,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -20,7 +22,11 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
+      }else{
+          history.push('/home')
       }
+    }else{
+      errors.push('Password must match')
     }
   };
 
@@ -41,7 +47,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
@@ -82,10 +88,10 @@ const SignUpForm = () => {
   
         <input
           type='password'
-          name='repeat_password'
+          name='confirm_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
+          // required={true}
           placeholder='Confirm Password'
           className='login-form-input'
         ></input>
