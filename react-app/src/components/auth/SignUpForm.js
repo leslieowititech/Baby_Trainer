@@ -18,16 +18,14 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+   
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
       }else{
           history.push('/home')
       }
-    }else{
-      errors.push('Password must match')
-    }
+    
   };
 
   const updateUsername = (e) => {
@@ -46,6 +44,7 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  
   if (user) {
     return <Redirect to='/home' />;
   }
