@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 
 import { login } from '../../store/session';
@@ -21,8 +21,7 @@ const SplashPage = ()  => {
     return (
         <div className='splash-page-container'>            
             <h1 className='splash-page-h1'>Welcome to baby Trainer!™</h1> 
-            <ul>
-                
+            <ul>               
                 <LoginFormModal/>
                 <SignUpFormModal/>                
                 <li className='splash-page-btn demo-btn'>
