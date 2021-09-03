@@ -44,7 +44,7 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <TimerModal type={type}/>
+                    <TimerModal type={type} setShowModal={setShowModal}/>
                 </Modal>
             )}
             <span>or</span>
