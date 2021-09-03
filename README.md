@@ -6,6 +6,8 @@ Link to [Live site](https://baby-trainer.herokuapp.com/)
 
 ## Baby Trainer at a glance
 
+![Feed_flow_logs](	https://mir-s3-cdn-cf.behance.net/project_modules/disp/674f04126687771.6132389abe68a.png)
+
 Baby Trainer is a fullstack app that uses a Flask backend and React on the front end.
 
 Target users are parents with new borns and especially new parents. There is a lot to taking care of a baby and speaking from personal experience it is a lot to try and get a handle on at first time of asking. There is a lot of helpful apps out there and I hope Baby Trainer will add positively to help new moms and dads have a way to manage babies development activities.
