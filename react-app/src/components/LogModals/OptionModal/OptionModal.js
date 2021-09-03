@@ -45,7 +45,7 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
                 type,
                 user_id: user.id,
                 baby_id: +babyId,
-                change_time: `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
+                change_time: `${year}-${day}-${month} ${hour}:${minute}:${seconds}`
             }
             // '2017-09-05 18:45:28'
 

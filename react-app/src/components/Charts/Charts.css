@@ -6,18 +6,20 @@
 }
 
 .chart{
-    /* border: 1px solid red; */
     height: 500px;
-    width: 900px;
+    width: 90%;
     background-color: #F5EDD7;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 40px;
 }
 
 .charts-info{
     display: flex;
     margin-top: 5%;
+    /* border: 1px solid red; */
+    width: 100%;
 
 }
 
