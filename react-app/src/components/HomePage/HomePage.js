@@ -40,11 +40,7 @@ const HomePage = () => {
 
           }
      },[babyData])
-     const checkBabySelection = () => {
-          if(!babyId){
-               alert('please select a baby')
-          }
-     }
+    
 
      useEffect(() => {
           dispatch(findBabies())
@@ -69,12 +65,19 @@ const HomePage = () => {
                     <button className='view-charts-btn'>View Charts</button>
                </NavLink>
            </div>
-           <NavLink to='/users/profile'>
-                <button className='settings fas fa-cog'>⚙</button>
-           </NavLink>  
-           <NavLink to='/logs/edit'>
-                view/edit a log?
-          </NavLink>         
+              <div className='view-charts-btn-div'>
+                    <NavLink to='/users/profile'>
+                        <button className=' view-charts-btn'>View Babies</button>
+                    </NavLink> 
+               </div>
+           <div className='view-charts-btn-div'>
+               <NavLink to='/logs/edit'>
+                        <button className=' view-charts-btn'>
+
+                         view/edit a log?
+                    </button>
+               </NavLink>  
+           </div>       
         </div>
     )
 }
