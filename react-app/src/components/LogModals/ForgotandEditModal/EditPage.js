@@ -79,12 +79,25 @@ const EditPage = () => {
         dispatch(deleteADiaper(id))
     }
 
-    // const turnOffFeedMode = () => {
-    //     if(editMode){
-
-    //         setEditMode(false)
-    //     }
-    // }
+    const DiaperLog = ({editMode, diaper}) => {
+        return (
+           <>
+            {editMode && 
+                <form className = 'edit-page-form' onSubmit = {(e) => editSpecificDiaper(e, diaper.baby_id, diaper.id)}>
+                                
+                    <input 
+                    className='edit-page-form-input'
+                    placeholder='Enter diaper change type'
+                    value={diaperType}
+                    onChange={(e) => setDiaperType(e.target.value)}
+                ></input>
+                <button type='submit' className='save-form-btn'>Save</button>
+            </form >
+            }
+            </>
+          
+        )
+    }
 
     useEffect(() => {
         dispatch(getFeeds())
@@ -145,7 +158,7 @@ const EditPage = () => {
                                                 onChange={(e) => setType(e.target.value)}
                                                 className='edit-page-form-input'
                                         ></input>
-                                        <button type='submit'>Save</button>
+                                    <button type='submit' className='save-form-btn'>Save</button>
                                     </form>
                                 }
                             </>
@@ -160,22 +173,25 @@ const EditPage = () => {
                     <h2>Diaper Logs</h2>
                     {diaperData.map(diaper => (
                         <>
-                            <div className='data-container' key={diaper.id} >
-                                <div className='data-item'>
-                                    <div>{`Diaper change time: ${diaper.change_time}`}</div>
-                                    <div>{`Type: ${diaper.type}`}</div>
+                          
+                            
+                                <div className='data-container' key={diaper.id} >
+                                    <div className='data-item'>
+                                        <div>{`Diaper change time: ${diaper.change_time}`}</div>
+                                        <div>{`Type: ${diaper.type}`}</div>
+                                    </div>
+                                    <div >
+                                        <button 
+                                            className='util-btn edit-btn'
+                                            onClick={editDiaperMode ? () => setEditDiaperMode(false) :() => setEditDiaperMode(true)}
+                                        >Edit</button>
+                                        <button
+                                                onClick={() => deleteSpecificDiaper(diaper.id)}
+                                                className='util-btn delete-btn'
+                                        >Delete</button>
+                                    </div>
                                 </div>
-                                <div >
-                                    <button 
-                                        className='util-btn edit-btn'
-                                        onClick={editDiaperMode ? () => setEditDiaperMode(false) :() => setEditDiaperMode(true)}
-                                    >Edit</button>
-                                    <button
-                                            onClick={() => deleteSpecificDiaper(diaper.id)}
-                                            className='util-btn delete-btn'
-                                    >Delete</button>
-                                </div>
-                            </div>
+                           
                             {editDiaperMode && 
                             
                                 <form className='edit-page-form' onSubmit={(e) => editSpecificDiaper(e, diaper.baby_id, diaper.id)}>
@@ -186,7 +202,7 @@ const EditPage = () => {
                                         value={diaperType}
                                         onChange={(e) => setDiaperType(e.target.value)}
                                     ></input>
-                                    <button type='submit'>Save</button>
+                                    <button type='submit' className='save-form-btn'>Save</button>
                                 </form>
                             }
                         </>
