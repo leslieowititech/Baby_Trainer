@@ -48,7 +48,7 @@ const TimerModal = ({type}) => {
             setPlaySate(true) 
             start()      
         }else{
-            alert('Please select a baby')
+            alert('Please select a baby.')
         }
     }
 
