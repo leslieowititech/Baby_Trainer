@@ -28,6 +28,7 @@ Recharts in my opinion is by far the best library out there that I have come acr
 ## Figma
 I utilised Figma's design tools to wireframe my app before I begun building out my components. I found this practice to be very helpful in visualising the amount of work building the app will approximately take and what kind of tools do I want to build from scratch and where good third party libraries if available can be utilised.
 
+Below is an example of a wireframe workflow i designed in figma to hel me visualize how i wanted this feature to work.
 
 ![Feed_flow_logs](	https://mir-s3-cdn-cf.behance.net/project_modules/disp/674f04126687771.6132389abe68a.png)
  
