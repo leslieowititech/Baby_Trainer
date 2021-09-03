@@ -2,6 +2,8 @@
 
 By Leslie Owiti.
 
+Link to [Live site](https://baby-trainer.herokuapp.com/)
+
 ## Baby Trainer at a glance
 
 Baby Trainer is a fullstack app that uses a Flask backend and React on the front end.
