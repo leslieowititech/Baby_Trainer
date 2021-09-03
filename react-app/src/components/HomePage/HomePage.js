@@ -60,24 +60,24 @@ const HomePage = () => {
                     <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast' logType='Feed log' />
                     {/* <LogItemDiv title='Diaper' imgUrl={diaperUrl} icon1={diaperUrl} icon2={diaperUrl} option1='Poo' option2='Pee' logType='Diaper Log'/> */}
            </div>
-           <div className='view-charts-btn-div'>
-               <NavLink to='/babies/view/charts'>
-                    <button className='view-charts-btn'>View Charts</button>
+              <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
+                    <div className='view-charts-btn-div'>
+                              <button className='view-charts-btn'>View Charts</button>
+                    </div>
                </NavLink>
-           </div>
-              <div className='view-charts-btn-div'>
-                    <NavLink to='/users/profile'>
-                        <button className=' view-charts-btn'>View Babies</button>
-                    </NavLink> 
-               </div>
-           <div className='view-charts-btn-div'>
-               <NavLink to='/logs/edit'>
-                        <button className=' view-charts-btn'>
+              <NavLink to='/users/profile' className='view-charts-btn-div'>
+                    <div className='view-charts-btn-div'>
+                              <button className=' view-charts-btn'>View Babies</button>
+                         </div>
+               </NavLink> 
+              <NavLink to='/logs/edit' className='view-charts-btn-div'>
+                    <div className='view-charts-btn-div'>
+                              <button className=' view-charts-btn'>
 
-                         view/edit a log?
-                    </button>
+                                   view/edit a log?
+                              </button>
+                    </div>       
                </NavLink>  
-           </div>       
         </div>
     )
 }
