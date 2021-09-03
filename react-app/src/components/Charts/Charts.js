@@ -127,7 +127,7 @@ const Charts = () => {
                         </LineChart>
                     </ResponsiveContainer>
                     )}
-                    {showDiaperChart && (
+                    {/* {showDiaperChart && (
                         <ResponsiveContainer>
                             <BarChart data={diaperData} margin={{
             top: 20,
@@ -140,7 +140,7 @@ const Charts = () => {
                                     <Bar dataKey='type' fill="#8884d8"/>
                             </BarChart>
                         </ResponsiveContainer>
-                    )}
+                    )} */}
                     </>
                 </div>
             </div>
