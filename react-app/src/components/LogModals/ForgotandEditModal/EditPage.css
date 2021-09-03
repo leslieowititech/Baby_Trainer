@@ -59,3 +59,12 @@
     border-radius: 8px;
 
 }
+
+.save-form-btn{
+    background: none;
+    background-color: #F8F3E6;
+    width: 50px;
+    height: 30px;
+    /* border: 1px solid rgba(231, 167, 95, 0.836); */
+    border-radius: 8px;
+}
