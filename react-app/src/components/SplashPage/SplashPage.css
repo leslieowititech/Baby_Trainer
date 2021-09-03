@@ -45,6 +45,10 @@
     bottom: 0;
     height: 30px;
 }
+.footer > a {
+    color: black;
+
+}
 
 a {
     text-decoration: none;
