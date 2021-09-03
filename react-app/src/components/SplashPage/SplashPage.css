@@ -9,7 +9,6 @@
     list-style: none;
     list-style-type: none;
     text-decoration: none;
-    /* border: 1px solid red; */
     width: 25em;
     height: 2em;
     border-radius: 8px;
@@ -23,15 +22,16 @@
 }
 
 .splash-page-container{
-    /* height: 1920px; */
+  /* border: 1px solid red; */
+
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;   
   padding: 25px;
-  margin-top: 25%;
-  /* background-image: url(https://images.unsplash.com/photo-1542407424724-5426773d65a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80); */
-  
+  /* margin-top: 25%; */
+  background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e41bb7126687771.6132880f8160e.png);
 }
 
 .footer{
