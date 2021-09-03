@@ -1,12 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 import './OptionModal.css';
 import { Modal } from '../../../context/Modal';
 import TimerModal from '../TimerModal/TimerModal';
+import { addADiaper } from '../../../store/diaper';
 
 const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
+    const user = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false);
     const [type, setType] = useState('');
+    const dispatch = useDispatch();
+    const {babyId} = useParams();
+    console.log(babyId, '_________babyidHere')
 
     const handleClick = (e) => {
       
@@ -17,12 +24,35 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
             }else if(e.target.className.includes('breast')){
                 setType('breast')
             }
-        } 
+        } else if (logType === 'Diaper Log'){
+            if(e.target.className.includes('pee')){
+                setType('pee')
+            }else if(e.target.className.includes('poo')){
+                setType('poo')
+            }
+        }
         
     }
+    // console.log(type, '___________justchecking')
+    const date = new Date();
+    const [year, month, day, hour, minute,seconds] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
+    // console.log(`${year}-${month}-${day} ${hour}:${minute}:${seconds}________format Date`)
 
     
-    
+    useEffect(() => {
+        if(type === 'pee' || type === 'poo'){
+            const payload = {
+                type,
+                user_id: user.id,
+                baby_id: +babyId,
+                change_time: `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
+            }
+            // '2017-09-05 18:45:28'
+
+            alert('Diaper change logged')
+            dispatch(addADiaper(payload))
+        }
+    },[type, dispatch, user, babyId])
    
     
     
