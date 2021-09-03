@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
 
 
+
 import './TimerModal.css';
 import { addAFeed } from '../../../store/feed';
 
@@ -68,7 +69,7 @@ const TimerModal = ({type}) => {
         return totalMinutes;
     }
 
-    const handlePause = () => {
+    const handlePause = () => {        
         setPlaySate(false) 
         pause()
     }
