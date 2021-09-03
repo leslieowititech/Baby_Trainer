@@ -79,12 +79,12 @@ const EditPage = () => {
         dispatch(deleteADiaper(id))
     }
 
-    const turnOffFeedMode = () => {
-        if(editMode){
+    // const turnOffFeedMode = () => {
+    //     if(editMode){
 
-            setEditMode(false)
-        }
-    }
+    //         setEditMode(false)
+    //     }
+    // }
 
     useEffect(() => {
         dispatch(getFeeds())
@@ -116,7 +116,7 @@ const EditPage = () => {
                                 <div className='data-container' key={feed.id} >
                                     <div className='data-item'>
                                         <div>{`Type: ${feed.type}`}</div>
-                                        <div>{`Amount in oz: ${feed.amount}`}</div>
+                                        <div>{`Amount in minutes: ${feed.amount}`}</div>
                                     </div>
                                     <div >
                                         <button 

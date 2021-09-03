@@ -6,6 +6,7 @@ const DELETE_DIAPER = 'diapers/DELETE_DIAPER';
 const EDIT_DIAPER = 'diapers/EDIT_DIAPER';
 
 const setDiaper = (diaper) => {
+    // console.log(diaper, '________________diaperFOMAT')
     return {
         type: CREATE_DIAPER,
         payload: diaper

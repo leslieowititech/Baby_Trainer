@@ -13,7 +13,7 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
     const [type, setType] = useState('');
     const dispatch = useDispatch();
     const {babyId} = useParams();
-    console.log(babyId, '_________babyidHere')
+    // console.log(babyId, '_________babyidHere')
 
     const handleClick = (e) => {
       
@@ -45,14 +45,14 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
                 type,
                 user_id: user.id,
                 baby_id: +babyId,
-                change_time: `${year}-${day}-${month} ${hour}:${minute}:${seconds}`
+                change_time: `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
             }
             // '2017-09-05 18:45:28'
 
             alert('Diaper change logged')
             dispatch(addADiaper(payload))
         }
-    },[type, dispatch, user, babyId])
+    },[type, dispatch, user, babyId, day, year, month, hour, minute, seconds])
    
     
     
