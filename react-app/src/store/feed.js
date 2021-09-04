@@ -47,7 +47,7 @@ const feedReducer = ( state = initialState, action) =>  {
             delete newState[action.payload];
             return newState
         case EDIT_FEED:
-            console.log(action, '_________EditStore')
+            console.log(action.payload, '_________EditStore')
            return  {  ...state,
                 [action.payload.id]: action.payload
             }
@@ -61,6 +61,7 @@ const feedReducer = ( state = initialState, action) =>  {
 }
 
 export const editAFeed = (data, id) => async dispatch => {
+    console.log(data, '________dataHere')
     const response = await fetch(`/api/feeds/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},

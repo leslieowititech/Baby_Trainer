@@ -53,6 +53,8 @@ const diaperReducer = (state = initialState, action) => {
             newState[action.payload.id] = action.payload
             return newState
         case EDIT_DIAPER:
+            return { ...state,
+            [action.payload.id]: action.payload}
         default:
             return newState
     }
