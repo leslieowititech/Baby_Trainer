@@ -1,0 +1,55 @@
+.diaper-log-contaner{
+    border-radius: 8px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    padding: 30px;  
+    /* border-right: 1px solid red; */
+}
+
+.diaper-log-card{
+    /* border: 1px solid red; */
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #c1ddd8b9;
+    margin-top: 15px;
+
+}
+
+.diaper-log-input-box{
+    background-color: #C4C4C4;
+    border-radius: 8px;
+    height: 30px;
+    margin-bottom: 15px;
+
+}
+
+.logs-save-btn{
+    background: none;
+    background-color: #F2C2C2;
+    height: 30px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 8px;
+}
+
+.logs-edit-btn{
+    background: none;
+    background-color: #F8F3E6;
+    height: 40px;
+    width: 80px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+    margin-top: 15px;
+}
+
+.form{
+    background-color: #ffffff;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+
+
+}

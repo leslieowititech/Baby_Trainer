@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './HomePage.css';
 import { findBabies } from '../../store/baby';
+import AddBabyFormModal from '../LoginFormModal';
 
 
 const HomePage = () => {   
@@ -55,11 +56,17 @@ const HomePage = () => {
                 <LogoutButton/>           
            </div>
            <h1 className='log-message'>{logMessage}</h1>
+              
+
            <div className='loggging-div'>                
                     {/* <LogItemDiv title='Sleep' imgUrl={mooniconUrl}/>                   */}
                     <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast' logType='Feed log' />
                     <LogItemDiv title='Diaper' imgUrl={diaperUrl} icon1={diaperUrl} icon2={diaperUrl} option1='Poo' option2='Pee' logType='Diaper Log'/>
            </div>
+              <div className='view-charts-btn-div'>
+
+                   <AddBabyFormModal />
+              </div>
               <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className='view-charts-btn'>View Charts</button>

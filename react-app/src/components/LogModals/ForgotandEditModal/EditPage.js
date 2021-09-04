@@ -11,6 +11,7 @@ import { getAllDiapers } from '../../../store/diaper';
 import { deleteADiaper } from '../../../store/diaper';
 import { editADiaper } from '../../../store/diaper';
 // import EditPageDropDown from '../../BabyDropDown/EditPageDropDown';
+import DiaperLogs from '../../DiaperandFeedLogs/DiaperLogs';
 import './EditPage.css';
 
 const EditPage = () => {
@@ -66,6 +67,10 @@ const EditPage = () => {
 
     const editSpecificFeed = (e, baby_id, id) => {
         e.preventDefault()  
+        const logItemGettingedited = document.getElementById(`feed-log-item-${id}`)
+        const editFormforlogItem = document.getElementById(`feed-edit-item-${id}`)
+        logItemGettingedited.style.visibility = 'visible'
+        editFormforlogItem.style.visibility = 'hidden'
         payload.baby_id = baby_id      
         dispatch(editAFeed(payload, id))
     }
@@ -82,11 +87,19 @@ const EditPage = () => {
     const handleEditState = (e, id) => {
         e.preventDefault()
         const logItemGettingedited = document.getElementById(`feed-log-item-${id}`)
-        logItemGettingedited.hidden = true
         const editFormforlogItem = document.getElementById(`feed-edit-item-${id}`)
-        // console.log(editFormforlogItem)
-        // console.log(logItemGettingedited)
-        editFormforlogItem.hidden = false
+        if (editFormforlogItem.style.visibility === 'hidden'){
+            editFormforlogItem.style.visibility = 'visible'
+            logItemGettingedited.style.visibility = 'hidden'
+        }else{
+            editFormforlogItem.style.visibility = 'hidden'
+            logItemGettingedited.style.visibility = 'visible'
+        }
+        
+    }
+
+    const handleEditStateDiapers = (e, id) => {
+        e.preventDefault()
     }
 
     useEffect(() => {
@@ -105,13 +118,8 @@ const EditPage = () => {
                 {/* <EditPageDropDown/> */}
                 <LogoutButton />
             </div>
-            <div className='edit-page-btns'>
-                {/* <button className='chart-btn edit-page-btn'>Sleep</button>  */}
-                <button className='chart-btn edit-page-btn' onClick={showFeedData ? () => setShowFeedData(false) : () => setShowFeedData(true)}>Feed</button>
-                <button className='chart-btn edit-page-btn' onClick={showDiaperData ? () => setShowDiaperData(false) : () => setShowDiaperData(true)}>Diaper</button>
-            </div>
-                
-                  
+            <div className='all-logs'>
+                    <DiaperLogs/>
                     <div className='edit-data'>
                         <h2>Feed Logs</h2>
                         {feedData.map(feed => (
@@ -134,7 +142,7 @@ const EditPage = () => {
                                 </div>
                                 
                                 
-                                <form hidden={true} onSubmit={(e) => editSpecificFeed(e, feed.baby_id, feed.id)} className='edit-page-form' id={`feed-edit-item-${feed.id}`}>
+                                <form style={{ visibility: 'hidden' }} onSubmit={(e) => editSpecificFeed(e, feed.baby_id, feed.id)} className='edit-page-form' id={`feed-edit-item-${feed.id}`}>
                                         <input
                                                 placeholder='Enter new feed amount'
                                                 value={amount}
@@ -155,10 +163,8 @@ const EditPage = () => {
                             
                         ))}
                     </div>
-                    
-                    
-                
-                {showDiaperData && 
+
+                 
                 <div className='edit-data'>
                     <h2>Diaper Logs</h2>
                     {diaperData.map(diaper => (
@@ -166,7 +172,7 @@ const EditPage = () => {
                           
                             
                                 <div className='data-container' key={diaper.id} >
-                                    <div className='data-item'>
+                                    <div className='data-item' >
                                         <div>{`Diaper change time: ${diaper.change_time}`}</div>
                                         <div>{`Type: ${diaper.type}`}</div>
                                     </div>
@@ -182,7 +188,7 @@ const EditPage = () => {
                                     </div>
                                 </div>
                            
-                            {editDiaperMode && 
+                            
                             
                                 <form className='edit-page-form' onSubmit={(e) => editSpecificDiaper(e, diaper.baby_id, diaper.id)}>
                                 
@@ -194,11 +200,12 @@ const EditPage = () => {
                                     ></input>
                                     <button type='submit' className='save-form-btn'>Save</button>
                                 </form>
-                            }
+                            
                         </>
                     ))}
                 </div>
-                }
+            </div>
+                
           
         </div>
     )
