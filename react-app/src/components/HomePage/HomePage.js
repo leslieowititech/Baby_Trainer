@@ -67,11 +67,11 @@ const HomePage = () => {
 
                    <AddBabyFormModal />
               </div>
-              <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
+              {/* <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className='view-charts-btn'>View Charts</button>
                     </div>
-               </NavLink>
+               </NavLink> */}
               <NavLink to='/users/profile' className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className=' view-charts-btn'>View Babies</button>

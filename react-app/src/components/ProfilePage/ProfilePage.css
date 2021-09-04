@@ -5,6 +5,34 @@
     align-items: center;
 }
 
+.babies-info-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    padding: 30px; 
+    /* border: 1px solid red; */
+    
+
+}
+
+.baby-info-card{
+    /* border: 1px solid red; */
+    width: 70%;
+    height: max-content;
+    padding: 15px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;    
+    border-radius: 8px;
+    background-color: #F5E4DC;
+    justify-content: center;
+    /* align-items: center; */
+    /* border: 1px solid red; */
+  
+}
+
 .user-info{
     width: 100%;
     /* border: 1px solid red; */
@@ -12,6 +40,7 @@
     height: 200px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .circle{
@@ -51,22 +80,7 @@
     margin-bottom: 30px;
 }
 
-.baby-info{
-    /* border: 1px solid red; */
-    width: 70%;
-    height: max-content;
-    padding: 15px;
-    display: flex;
-    /* align-items: center; */
-    flex-direction: column;
-    margin-bottom: 15px;
-    margin-left: 30px;
-    border-radius: 8px;
-    background-color: #F5E4DC;
-    justify-content: center;
-    /* align-items: center; */
-  
-}
+
 
 .info-item{
     margin-left: 15px;
@@ -74,13 +88,13 @@
 }
 
 .util-btn{
-    /* border: 1px solid red; */
+    background: none;
+    background-color: #F8F3E6;
     height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    margin-left: 15px;
-    align-items: center;
-    justify-content: center;
+    width: 80px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+    margin-top: 15px;
 }
 
 .delete-btn{
