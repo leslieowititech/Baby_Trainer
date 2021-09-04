@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 class FeedForm(FlaskForm):
     type = StringField('type', validators=[DataRequired()])
-    feed_time = DateTimeField('feed_time')
+    feed_time = DateField('feed_time')
     amount= IntegerField('amount')
     user_id = IntegerField('user_id', validators=[DataRequired()])
     baby_id = IntegerField('baby_id', validators=[DataRequired()])

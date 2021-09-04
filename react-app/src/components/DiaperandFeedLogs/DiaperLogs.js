@@ -13,7 +13,7 @@ const DiaperLogs = () => {
     const dispatch = useDispatch();
     const diapers = useSelector(state => state.diapers);
     const user = useSelector(state => state.session.user);
-    const babies = useSelector(state => state.babies)
+    const babies = useSelector(state => state.babies);
     const userId = user.id;
 
     const diaperData = Object.values(diapers);
@@ -77,6 +77,10 @@ const DiaperLogs = () => {
         handleEditState(e, id)
    }
 
+    const deleteSpecificDiaper = (id) => {
+        dispatch(deleteADiaper(id))
+    }
+
     useEffect(() => {
         dispatch(getAllDiapers())
         dispatch(findBabies())
@@ -87,7 +91,7 @@ const DiaperLogs = () => {
             <h1>Diaper Logs 👶</h1>
             <div>
                 {userDiaperData.map(diaperObj => (
-                    <div>
+                    <div key={diaperObj.id}>
                         <div id={`diaper-log-info-${diaperObj.id}`} className='diaper-log-card'>
                             <h2>
                                 {`Baby Name: ${diaperObj.babyName}`}
@@ -125,7 +129,10 @@ const DiaperLogs = () => {
                         </form>
                         <div>
                             <button onClick={(e) => handleEditState(e, diaperObj.id)} className='logs-edit-btn'>Edit</button>
-                            <button className='logs-delete-btn'>Delete</button>
+                            <button 
+                                    className='logs-delete-btn'
+                                    onClick={() => deleteSpecificDiaper(diaperObj.id)}
+                                    >Delete</button>
                         </div>
 
                     </div>

@@ -10,7 +10,7 @@ class Feed(db.Model, Base):
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(100), nullable=False)
-    feed_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    feed_time = db.Column(db.DateTime, nullable=False)
     amount = db.Column(db.Float)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     baby_id = db.Column(db.Integer, db.ForeignKey('babies.id'), nullable=False)
@@ -22,5 +22,6 @@ class Feed(db.Model, Base):
             'type': self.type,
             'amount': self.amount,
             'user_id': self.user_id,
-            'baby_id': self.baby_id
+            'baby_id': self.baby_id,
+            'feed_time': self.feed_time
         }
