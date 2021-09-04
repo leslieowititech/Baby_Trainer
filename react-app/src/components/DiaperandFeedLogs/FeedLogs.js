@@ -83,6 +83,7 @@ const FeedLogs = () => {
     }
     useEffect(() => {
         dispatch(getFeeds())
+        dispatch(findBabies())
     }, [dispatch])
 
     return (
