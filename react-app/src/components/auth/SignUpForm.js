@@ -19,7 +19,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
    
-      const data = await dispatch(signUp(username, email, password));
+       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
       }else{
@@ -87,7 +87,7 @@ const SignUpForm = () => {
   
         <input
           type='password'
-          name='confirm_password'
+          name='confirm'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           // required={true}
