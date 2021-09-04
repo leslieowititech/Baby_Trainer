@@ -60,6 +60,22 @@ const DiaperLogs = () => {
            editForm.style.display = 'flex'
        }
    }
+ 
+   const [changeTime, setChangeTime] = useState(new Date());
+   const [type, setType] = useState('');
+
+   const payload = {
+       type,
+       user_id: user.id,
+       change_time: changeTime
+   }
+
+   const editSpecificDiaper = (e, baby_id, id) => {
+       e.preventDefault()
+        payload.baby_id = baby_id
+        dispatch(editADiaper(payload, id))
+        handleEditState(e, id)
+   }
 
     useEffect(() => {
         dispatch(getAllDiapers())
@@ -68,7 +84,7 @@ const DiaperLogs = () => {
 
     return (
         <div className='diaper-log-contaner'>
-            <h1>Diaper Logs :)</h1>
+            <h1>Diaper Logs 👶</h1>
             <div>
                 {userDiaperData.map(diaperObj => (
                     <div>
@@ -77,23 +93,39 @@ const DiaperLogs = () => {
                                 {`Baby Name: ${diaperObj.babyName}`}
                             </h2>
                             <h3>
-                                {`Diaper change time: ${diaperObj.change_time}`}
+                                {`Diaper change date: ${diaperObj.change_time}`}
                             </h3>
                             <h3>
                                 {`Diaper Type: ${diaperObj.type}`}
                             </h3>
                         </div>
-                        <form id={`diaper-log-edit-${diaperObj.id}`} className='diaper-log-card form' style={{ visibility: 'hidden', display: 'none' }}>
+                        <form 
+                                id={`diaper-log-edit-${diaperObj.id}`} 
+                                className='diaper-log-card form' 
+                                style={{ visibility: 'hidden', display: 'none' }}
+                                onSubmit={(e) => editSpecificDiaper(e, diaperObj.baby_id, diaperObj.id)}
+                                >
                             <h2>{`Baby Name: ${diaperObj.babyName}`}</h2>
-                            <label htmlFor='change_name'>Change Time:</label>
-                            <input id='change_time' className='diaper-log-input-box'></input>
-                            <label htmlFor='diaper-type'>Diaper Type:</label>
-                            <input id='diaper-type' className='diaper-log-input-box'></input>
-                            <button className='logs-save-btn'>Save</button>
+                            <label htmlFor='change_name' >Change Date:</label>
+                            <input 
+                                    id='change_time' 
+                                    value={changeTime}
+                                    onChange={(e) => setChangeTime(e.target.value)}
+                                    className='diaper-log-input-box' 
+                                    type='date'></input>
+                            <label 
+                                    htmlFor='diaper-type'>Diaper Type:</label>
+                            <input 
+                                    id='diaper-type'
+                                    value={type} 
+                                    onChange={(e) => setType(e.target.value)}
+                                    className='diaper-log-input-box'></input>
+                            <button 
+                                    className='logs-save-btn'>Save</button>
                         </form>
                         <div>
                             <button onClick={(e) => handleEditState(e, diaperObj.id)} className='logs-edit-btn'>Edit</button>
-                            <button>Delete</button>
+                            <button className='logs-delete-btn'>Delete</button>
                         </div>
 
                     </div>
