@@ -79,24 +79,14 @@ const EditPage = () => {
         dispatch(deleteADiaper(id))
     }
 
-    const DiaperLog = ({editMode, diaper}) => {
-        return (
-           <>
-            {editMode && 
-                <form className = 'edit-page-form' onSubmit = {(e) => editSpecificDiaper(e, diaper.baby_id, diaper.id)}>
-                                
-                    <input 
-                    className='edit-page-form-input'
-                    placeholder='Enter diaper change type'
-                    value={diaperType}
-                    onChange={(e) => setDiaperType(e.target.value)}
-                ></input>
-                <button type='submit' className='save-form-btn'>Save</button>
-            </form >
-            }
-            </>
-          
-        )
+    const handleEditState = (e, id) => {
+        e.preventDefault()
+        const logItemGettingedited = document.getElementById(`feed-log-item-${id}`)
+        logItemGettingedited.hidden = true
+        const editFormforlogItem = document.getElementById(`feed-edit-item-${id}`)
+        // console.log(editFormforlogItem)
+        // console.log(logItemGettingedited)
+        editFormforlogItem.hidden = false
     }
 
     useEffect(() => {
@@ -120,21 +110,21 @@ const EditPage = () => {
                 <button className='chart-btn edit-page-btn' onClick={showFeedData ? () => setShowFeedData(false) : () => setShowFeedData(true)}>Feed</button>
                 <button className='chart-btn edit-page-btn' onClick={showDiaperData ? () => setShowDiaperData(false) : () => setShowDiaperData(true)}>Diaper</button>
             </div>
-                {showFeedData &&
+                
                   
                     <div className='edit-data'>
                         <h2>Feed Logs</h2>
                         {feedData.map(feed => (
                             <>
                                 <div className='data-container' key={feed.id} >
-                                    <div className='data-item'>
+                                    <div className='data-item' id={`feed-log-item-${feed.id}`}>
                                         <div>{`Type: ${feed.type}`}</div>
                                         <div>{`Amount in minutes: ${feed.amount}`}</div>
                                     </div>
                                     <div >
                                         <button 
                                                 className='util-btn edit-btn'
-                                                onClick={editMode ? () => setEditMode(false):() => setEditMode(true)}
+                                                onClick={(e) => handleEditState(e, feed.id)}
                                                 >Edit</button>
                                         <button
                                                 onClick={() => deleteSpecificFeed(feed.id)} 
@@ -142,9 +132,9 @@ const EditPage = () => {
                                         >Delete</button>
                                     </div>
                                 </div>
-                                {editMode && 
                                 
-                                    <form onSubmit={(e) => editSpecificFeed(e, feed.baby_id, feed.id)} className='edit-page-form'>
+                                
+                                <form hidden={true} onSubmit={(e) => editSpecificFeed(e, feed.baby_id, feed.id)} className='edit-page-form' id={`feed-edit-item-${feed.id}`}>
                                         <input
                                                 placeholder='Enter new feed amount'
                                                 value={amount}
@@ -160,14 +150,14 @@ const EditPage = () => {
                                         ></input>
                                     <button type='submit' className='save-form-btn'>Save</button>
                                     </form>
-                                }
+                                
                             </>
                             
                         ))}
                     </div>
                     
                     
-                }
+                
                 {showDiaperData && 
                 <div className='edit-data'>
                     <h2>Diaper Logs</h2>
