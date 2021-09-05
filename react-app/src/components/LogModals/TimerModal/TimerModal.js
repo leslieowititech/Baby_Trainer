@@ -73,11 +73,14 @@ const TimerModal = ({type}) => {
         setPlaySate(false) 
         pause()
     }
+    const date = new Date();
+
+    const [year, month, day, hour, minute] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes()]
 
     
     const payload = {
         // feed_time='2017-09-05 19:45:28',
-        feed_time: '2017-09-05 19:45:28',
+        feed_time: `${year}-${month}-${day}`,
         user_id: user.id,
         baby_id: +babyId,
         amount: getTotalTimeForFeed(),
@@ -87,6 +90,7 @@ const TimerModal = ({type}) => {
     const handleSave = () => {
         pause()
         dispatch(addAFeed(payload))
+        alert('feed saved go to view logs to see it or edit it')
     }
 
     

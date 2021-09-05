@@ -6,6 +6,6 @@ from wtforms.validators import DataRequired, ValidationError
 
 class DiaperForm(FlaskForm):
     type = StringField('type')
-    change_time = DateField('change_time')
+    change_time = StringField('change_time')
     user_id = IntegerField('user_id')
     baby_id = IntegerField('baby_id')

@@ -90,7 +90,7 @@ const DiaperLogs = () => {
         <div className='diaper-log-contaner'>
             <h1>Diaper Logs 👶</h1>
             <div>
-                {userDiaperData.map(diaperObj => (
+                {userDiaperData?.map(diaperObj => (
                     <div key={diaperObj.id}>
                         <div id={`diaper-log-info-${diaperObj.id}`} className='diaper-log-card'>
                             <h2>
