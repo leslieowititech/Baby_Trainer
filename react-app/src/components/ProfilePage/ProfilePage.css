@@ -3,6 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    /* height: 100vh; */
+    /* border: 1px solid red; */
+
 }
 
 .babies-info-container{
@@ -12,9 +16,16 @@
     justify-content: center;
     height: max-content;
     padding: 30px; 
-    /* border: 1px solid red; */
     
 
+}
+
+.add-baby-profile-page-button{
+    /* border: 1px solid red; */
+    width: 80em;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 25px;
 }
 
 .baby-info-card{
@@ -115,4 +126,27 @@
 .profile-page-form-input{
     border-radius: 8px;
     margin-bottom: 5px;
+}
+
+.add-baby-container{
+    display: flex;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 8px;
+    flex-direction: column;
+    
+
+}
+
+.cancel-button{
+    position: relative;
+    left: 265px;
+    background: none;
+    /* border: 1px solid rgba(255, 0, 0, 0.26); */
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(255, 166, 0, 0.329); */
 }

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, flash
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
@@ -70,6 +70,7 @@ def sign_up():
         )
         db.session.add(user)
         db.session.commit()
+        # flash('Thanks for registering')
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

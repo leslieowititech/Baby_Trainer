@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import * as babyActions from '../../store/baby';
 import './ProfilePage.css';
 import LogoutButton from '../auth/LogoutButton';
+import AddBabyForm from '../BabyForms/AddBabyForm';
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
@@ -40,6 +41,22 @@ const ProfilePage = () => {
     const editSpecificBaby = (e, id) => {
         e.preventDefault()
         dispatch(babyActions.editABaby(payload, id))
+    }
+
+    const handleAddBaby = (e) => {
+        e.preventDefault()
+        const babyForm = document.getElementById(`add-baby`)
+        if(babyForm.style.visibility === 'hidden'){
+            babyForm.style.visibility = 'visible'
+            babyForm.style.display = 'flex'
+        }
+    }
+
+    const handleCancel = (e) => {
+        e.preventDefault()
+        const babyForm = document.getElementById(`add-baby`)
+        babyForm.style.visibility = 'hidden'
+        babyForm.style.display = 'none'
     }
 
     useEffect(() => {
@@ -107,6 +124,14 @@ const ProfilePage = () => {
                         </div>
                     ))}
                 </div>
+
+                <div style={{ visibility: 'hidden', display: 'none' }} id='add-baby' className='add-baby-container'>
+                    <button className='cancel-button' onClick={handleCancel}>❌</button>
+                    <AddBabyForm />
+                </div>
+                <button className='add-baby-profile-page-button'
+                        onClick={handleAddBaby}
+                >Add a Baby ➕</button>
             </div>
 
         </div>
