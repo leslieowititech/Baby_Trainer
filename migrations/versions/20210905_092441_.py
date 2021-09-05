@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b85989c31984
+Revision ID: 84c18753a47a
 Revises: ffdc0a98111c
-Create Date: 2021-09-04 17:38:12.396667
+Create Date: 2021-09-05 09:24:41.798977
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b85989c31984'
+revision = '84c18753a47a'
 down_revision = 'ffdc0a98111c'
 branch_labels = None
 depends_on = None
@@ -29,7 +29,7 @@ def upgrade():
     op.create_table('diapers',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=100), nullable=False),
-    sa.Column('change_time', sa.DateTime(), nullable=False),
+    sa.Column('change_time', sa.String(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('baby_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['baby_id'], ['babies.id'], ),
@@ -39,7 +39,7 @@ def upgrade():
     op.create_table('feeds',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=100), nullable=False),
-    sa.Column('feed_time', sa.DateTime(), nullable=False),
+    sa.Column('feed_time', sa.String(), nullable=False),
     sa.Column('amount', sa.Float(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('baby_id', sa.Integer(), nullable=False),

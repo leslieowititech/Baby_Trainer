@@ -7,7 +7,7 @@ import { Modal } from '../../../context/Modal';
 import TimerModal from '../TimerModal/TimerModal';
 import { addADiaper } from '../../../store/diaper';
 
-const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
+const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => {
     const user = useSelector(state => state.session.user)
     const [showModal, setShowModal] = useState(false);
     const [type, setType] = useState('');
@@ -21,14 +21,17 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
             setShowModal(true)           
             if(e.target.className.includes('bottle')){
                 setType('bottle')
+                
             }else if(e.target.className.includes('breast')){
                 setType('breast')
             }
         } else if (logType === 'Diaper Log'){
             if(e.target.className.includes('pee')){
                 setType('pee')
+                modalState = false
             }else if(e.target.className.includes('poo')){
                 setType('poo')
+                modalState = false
             }
         }
         
@@ -45,21 +48,23 @@ const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
                 type,
                 user_id: user.id,
                 baby_id: +babyId,
-                change_time: `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
+                change_time: `${year}-${month}-${day}`
             }
             // '2017-09-05 18:45:28'
 
-            alert('Diaper change logged')
             dispatch(addADiaper(payload))
+            alert('Diaper Change is logged go to view logs to see it or edit it')
+           
         }
     },[type, dispatch, user, babyId, day, year, month, hour, minute, seconds])
    
     
     
-   
-
+   console.log(modalState, '___________________hereModal')
+    // console.log(errors, '_____________errorsHere')
     return (
         <div className='option-modal-container'>
+            
             <h2 className='option-modal-logType' >
                  {logType}
             </h2>

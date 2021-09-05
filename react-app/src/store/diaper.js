@@ -97,7 +97,7 @@ export const addADiaper = (payload) => async dispatch => {
             baby_id: payload.baby_id
         })
     })
-
+    // console.log(payload.change_time, "______payload")
     if(response.ok){
         const data = await response.json()
         dispatch(setDiaper(data))
@@ -106,7 +106,7 @@ export const addADiaper = (payload) => async dispatch => {
 }
 
 export const editADiaper = (payload, id) => async dispatch => {
-    console.log(payload, '___________-editdiaperPayload')
+    // console.log(payload, '___________-editdiaperPayload')
     const response = await fetch(`/api/diapers/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},

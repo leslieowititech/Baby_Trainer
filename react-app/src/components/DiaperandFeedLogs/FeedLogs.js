@@ -90,7 +90,7 @@ const FeedLogs = () => {
         <div className='feed-log-container'>
             <h1>Feed Logs 🍼</h1>
             <div>
-                {userFeedData.map(feedObj => (
+                {userFeedData?.map(feedObj => (
                     <div key={feedObj.id}>
                         <div id={`feed-log-info-${feedObj.id}`} className='feed-log-card'>
                             <h2>
