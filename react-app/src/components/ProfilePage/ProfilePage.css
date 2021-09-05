@@ -20,6 +20,11 @@
 
 }
 
+.link-to-logs-page{
+    text-decoration: none;
+    color: black;
+}
+
 .add-baby-profile-page-button{
     /* border: 1px solid red; */
     width: 80em;

@@ -80,10 +80,12 @@ const ProfilePage = () => {
                 <div >
                     {babies?.map(baby => (
                         <div key={baby.id} >
-                            <div className='baby-info-card' id={`baby-info-${baby.id}`}>
-                                    <div className='info-item'>Baby name: {baby.name}</div>
-                                    <div className='info-item'>Birthday: {baby.birthday}</div>
-                            </div>  
+                            <NavLink to='/logs/edit' className='link-to-logs-page'>
+                                <div className='baby-info-card' id={`baby-info-${baby.id}`}>
+                                        <div className='info-item'>Baby name: {baby.name}</div>
+                                        <div className='info-item'>Birthday: {baby.birthday}</div>
+                                </div>  
+                            </NavLink>
                             <form
                                 onSubmit={(e) => editSpecificBaby(e, baby.id)}
                                 className='baby-info-card'
