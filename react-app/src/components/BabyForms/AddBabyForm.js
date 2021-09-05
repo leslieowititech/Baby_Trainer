@@ -21,7 +21,7 @@ const AddBabyForm = () => {
             errors.push('Name cannot be 0 characters')
         }else{
             dispatch(addBaby(name, birthday, user.id))
-
+            alert('Baby had been added you can now select your baby and start logging! :)')
         }
         
 
