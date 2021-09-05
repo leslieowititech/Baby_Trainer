@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import * as babyActions from '../../store/baby';
 import './ProfilePage.css';
 import LogoutButton from '../auth/LogoutButton';
+import AddBabyForm from '../BabyForms/AddBabyForm';
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
@@ -42,6 +43,22 @@ const ProfilePage = () => {
         dispatch(babyActions.editABaby(payload, id))
     }
 
+    const handleAddBaby = (e) => {
+        e.preventDefault()
+        const babyForm = document.getElementById(`add-baby`)
+        if(babyForm.style.visibility === 'hidden'){
+            babyForm.style.visibility = 'visible'
+            babyForm.style.display = 'flex'
+        }
+    }
+
+    const handleCancel = (e) => {
+        e.preventDefault()
+        const babyForm = document.getElementById(`add-baby`)
+        babyForm.style.visibility = 'hidden'
+        babyForm.style.display = 'none'
+    }
+
     useEffect(() => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
@@ -63,10 +80,12 @@ const ProfilePage = () => {
                 <div >
                     {babies?.map(baby => (
                         <div key={baby.id} >
-                            <div className='baby-info-card' id={`baby-info-${baby.id}`}>
-                                    <div className='info-item'>Baby name: {baby.name}</div>
-                                    <div className='info-item'>Birthday: {baby.birthday}</div>
-                            </div>  
+                            <NavLink to='/logs/edit' className='link-to-logs-page'>
+                                <div className='baby-info-card' id={`baby-info-${baby.id}`}>
+                                        <div className='info-item'>Baby name: {baby.name}</div>
+                                        <div className='info-item'>Birthday: {baby.birthday}</div>
+                                </div>  
+                            </NavLink>
                             <form
                                 onSubmit={(e) => editSpecificBaby(e, baby.id)}
                                 className='baby-info-card'
@@ -107,6 +126,14 @@ const ProfilePage = () => {
                         </div>
                     ))}
                 </div>
+
+                <div style={{ visibility: 'hidden', display: 'none' }} id='add-baby' className='add-baby-container'>
+                    <button className='cancel-button' onClick={handleCancel}>❌</button>
+                    <AddBabyForm />
+                </div>
+                <button className='add-baby-profile-page-button'
+                        onClick={handleAddBaby}
+                >Add a Baby ➕</button>
             </div>
 
         </div>
