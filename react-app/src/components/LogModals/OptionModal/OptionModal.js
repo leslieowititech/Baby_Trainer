@@ -60,7 +60,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
    
     
     
-   console.log(modalState, '___________________hereModal')
+//    console.log(modalState, '___________________hereModal')
     // console.log(errors, '_____________errorsHere')
     return (
         <div className='option-modal-container'>

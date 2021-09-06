@@ -9,7 +9,7 @@ import './TimerModal.css';
 import { addAFeed } from '../../../store/feed';
 
 const TimerModal = ({type}) => {
-    console.log(type, 'type_______')
+    // console.log(type, 'type_______')
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const {babyId} = useParams();
