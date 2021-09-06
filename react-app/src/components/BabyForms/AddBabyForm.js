@@ -16,18 +16,27 @@ const AddBabyForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors([])
-        
+        const editForm = document.getElementById(`add-baby-1`)
         if(name.length === 0){
             errors.push('Name cannot be 0 characters')
         }else{
             dispatch(addBaby(name, birthday, user.id))
+            if (editForm.style.visibility === 'visible') {
+                editForm.style.visibility = 'hidden'
+                editForm.style.display = 'none'
+            } else if (editForm.style.visibility === 'hidden') {
+                editForm.style.visibility = 'visible'
+                editForm.style.display = 'flex'
+            }
             alert('Baby had been added you can now select your baby and start logging!! :)')
         }
         
 
     }
     return (
-        <form onSubmit={handleSubmit} className='add-baby-form'>
+       
+
+<form style = {{ visibility: 'hidden', display: 'none'}} onSubmit={handleSubmit} id='add-baby-1' className='add-baby-form' >
             <ul>
                 {errors.map((error, index) => (
                     <li key={index}>{error}</li>

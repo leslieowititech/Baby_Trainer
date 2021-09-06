@@ -13,6 +13,16 @@
     flex-wrap: wrap;
 }
 
+.homepage-add-a-baby-btn{
+    width: 40%;
+    height: 50px;
+    background: none;
+    background-color: #F2C2C2;
+    margin-top: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .home-page-container{
     display: flex;
     flex-direction: column;
