@@ -9,7 +9,7 @@ import './TimerModal.css';
 import { addAFeed } from '../../../store/feed';
 
 const TimerModal = ({type}) => {
-    console.log(type, 'type_______')
+    // console.log(type, 'type_______')
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const {babyId} = useParams();
@@ -36,7 +36,7 @@ const TimerModal = ({type}) => {
         minutes,
         hours,
         days,
-        // isRunning,
+        isRunning,
         start,
         pause,
         reset,
@@ -44,7 +44,7 @@ const TimerModal = ({type}) => {
 
     const handlePlay = () => {
         if(babyId){
-
+            
             setPlaySate(true) 
             start()      
         }else{
@@ -95,22 +95,26 @@ const TimerModal = ({type}) => {
 
     
    
-    
+    // console.log(isRunning, '__________running?')
 
     return (
         <div className='timer-modal-container'>
             <div className='timer-modal-image-div'>
-                <img src={url} alt={url} className='timer-modal-image' onClick={playState ? handlePause : handlePlay}/>               
+                <img src={url} alt={url} className='timer-modal-image' onClick={playState ? handlePause : handlePlay}/> 
+                {!isRunning && <div style={{ fontSize: '100px' }}>
+                    <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+                    <div className='timer-modal-controls'>
+                        <button onClick={reset} className='timer-modal-btn'>Reset</button>
+                        <button className='timer-modal-btn' onClick={handleSave}>Save</button>
+                    </div>
+                    </div>}
             </div>
             {playState && 
                 <div style={{ textAlign: 'center' }} className='timer'>                    
                     <div style={{ fontSize: '100px' }}>
                         <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
                     </div>
-                    <div className='timer-modal-controls'>
-                        <button onClick={reset} className='timer-modal-btn'>Reset</button>
-                        <button className='timer-modal-btn' onClick={handleSave}>Save</button>
-                    </div>                                     
+                                                        
                 </div>
 
             }

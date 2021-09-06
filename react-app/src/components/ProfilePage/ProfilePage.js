@@ -46,6 +46,9 @@ const ProfilePage = () => {
     const handleAddBaby = (e) => {
         e.preventDefault()
         const babyForm = document.getElementById(`add-baby`)
+        const editForm = document.getElementById(`add-baby-1`)
+        editForm.style.visibility = 'visible'
+        editForm.style.display = 'flex'
         if(babyForm.style.visibility === 'hidden'){
             babyForm.style.visibility = 'visible'
             babyForm.style.display = 'flex'
@@ -131,7 +134,7 @@ const ProfilePage = () => {
                     <button className='cancel-button' onClick={handleCancel}>❌</button>
                     <AddBabyForm />
                 </div>
-                <button className='add-baby-profile-page-button'
+                <button className='homepage-add-a-baby-btn'
                         onClick={handleAddBaby}
                 >Add a Baby ➕</button>
             </div>

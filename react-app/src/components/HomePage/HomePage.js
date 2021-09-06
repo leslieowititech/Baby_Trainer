@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './HomePage.css';
 import { findBabies } from '../../store/baby';
 import AddBabyFormModal from '../LoginFormModal';
+import AddBabyForm from '../BabyForms/AddBabyForm';
 
 
 const HomePage = () => {   
@@ -42,6 +43,17 @@ const HomePage = () => {
           }
      },[babyData, babyId])
     
+     const handleEditState = (e, id) => {
+          e.preventDefault()
+          const editForm = document.getElementById(`add-baby-1`)
+          if (editForm.style.visibility === 'visible') {
+               editForm.style.visibility = 'hidden'
+               editForm.style.display = 'none'
+          } else if (editForm.style.visibility === 'hidden') {
+               editForm.style.visibility = 'visible'
+               editForm.style.display = 'flex'
+          }
+     }
 
      useEffect(() => {
           dispatch(findBabies())
@@ -57,16 +69,17 @@ const HomePage = () => {
            </div>
            <h1 className='log-message'>{logMessage}</h1>
               
-
+              <button className='homepage-add-a-baby-btn' onClick={handleEditState}>Add a Baby ➕</button>
+              <AddBabyForm />
            <div className='loggging-div'>                
                     {/* <LogItemDiv title='Sleep' imgUrl={mooniconUrl}/>                   */}
                     <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast' logType='Feed log' />
                     <LogItemDiv title='Diaper' imgUrl={diaperUrl} icon1={diaperUrl} icon2={diaperUrl} option1='Poo' option2='Pee' logType='Diaper Log'/>
            </div>
-              <div className='view-charts-btn-div'>
+              {/* <div className='view-charts-btn-div'>
 
                    <AddBabyFormModal />
-              </div>
+              </div> */}
               {/* <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className='view-charts-btn'>View Charts</button>
