@@ -28,6 +28,7 @@ const AddBabyForm = () => {
                 editForm.style.visibility = 'visible'
                 editForm.style.display = 'flex'
             }
+            
             alert('Baby had been added you can now select your baby and start logging!! :)')
         }
         
