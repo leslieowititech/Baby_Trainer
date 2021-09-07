@@ -41,6 +41,7 @@ const ProfilePage = () => {
     const editSpecificBaby = (e, id) => {
         e.preventDefault()
         dispatch(babyActions.editABaby(payload, id))
+        handleEditState(e,id)
     }
 
     const handleAddBaby = (e) => {
@@ -101,7 +102,7 @@ const ProfilePage = () => {
                                     onChange={(e) => setName(e.target.value)}
                                     id='baby-name'
                                     name='name'
-                                    className='profile-page-form-input'
+                                    className='profile-page-form-input diaper-log-input-box'
                                     placeholder={baby.name}
 
                                 />
@@ -112,19 +113,19 @@ const ProfilePage = () => {
                                     name='birthday'
                                     id='baby-birthday'
                                     type='date'
-                                    className='profile-page-form-input'
+                                    className='profile-page-form-input diaper-log-input-box'
 
                                 />
-                                <button type='submit'>Save</button>
+                                <button type='submit' className='logs-save-btn'>Save</button>
                             </form>
                             <div >
                                 <button 
                                         className='util-btn edit-btn' 
                                         onClick={(e) => handleEditState(e, baby.id)}                                      
-                                        >&#9998;</button>
+                                >Edit</button>
                                 <button 
                                         onClick={() => deleteSpecificBaby(baby.id) } 
-                                        className='util-btn delete-btn'>&#128465;</button>
+                                    className='util-btn delete-btn'>Delete</button>
                             </div>                         
                         </div>
                     ))}
