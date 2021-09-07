@@ -40,7 +40,37 @@ const Charts = () => {
         })
     }
 
+    let displayDataDiapers;
+    displayDataDiapers = diaperData.filter(diaper => {
+        return diaper.baby_id === +babyId
+    })
 
+    console.log(displayDataDiapers, '__________dataHere')
+    let res = [];
+    for(let i = 0 ; i< displayDataDiapers.length ; i++){
+        let normalisedData = {}
+        let diaper = displayDataDiapers[i]
+        let currentChangeTime = diaper.change_time
+        normalisedData['changeTime']= currentChangeTime
+        if(diaper.type === 'poo'){ 
+            normalisedData.poo = 1
+            normalisedData.pee = 0
+        }
+        if(diaper.type === 'pee'){ 
+            normalisedData.pee = 1
+            normalisedData.poo = 0
+        }
+        for(let j = i + 1 ; j < displayDataDiapers.length; j++){
+            let otherDiaper = displayDataDiapers[j]
+            let otherDiaperChangeTime = otherDiaper.change_time
+            if(otherDiaperChangeTime === currentChangeTime){
+                if(otherDiaper.type === 'poo') normalisedData.poo++
+                if(otherDiaper.type === 'pee') normalisedData.pee++
+            }
+        }
+        res.push(normalisedData)
+    }
+    console.log(res, '___________________modifiedDATA')
     
 
     const [showChart, setShowChart] = useState(false);
@@ -52,6 +82,7 @@ const Charts = () => {
 
     const handleShowFeed = () => {
         if(babyId){
+            setshowDiaperChart(false)
             setShowChart(true)
         }else{
             alert('Plase select a baby')
@@ -59,25 +90,15 @@ const Charts = () => {
     }
     const handleShowDiapers = () => {
         if(babyId){
+            setShowChart(false)
             setshowDiaperChart(true)
         }else{
             alert('Please select a baby')
         }
     }
-
+    
    
-    useEffect(() => {
-        for (let i = 0; i < diaperData.length; i++) {
-            let diaper = diaperData[i]
-            let res = {}
-            if (res.time) {
-                console.log(res.time === diaper.change_time, '______________match?')
-                console.log(res.time, '________ and________ ', diaper.change_time)
-            } else {
-                res.time = diaper.change_time
-            }
-        }
-    })
+    
   
     useEffect(() => {
         if (babyId) {
@@ -110,7 +131,7 @@ const Charts = () => {
             <h1>{babyName}</h1>
             <div className='charts-info'>
                 <div className='chart-btns'>
-                    {/* <button className='chart-btn' onClick={handleShowDiapers}>Diaper</button> */}
+                    <button className='chart-btn' onClick={handleShowDiapers}>Diaper</button>
                     <button className='chart-btn' onClick={handleShowFeed}>Feeds</button>
                     {/* <button className='chart-btn'>Sleep</button> */}
                 </div>
@@ -129,15 +150,17 @@ const Charts = () => {
                     )}
                     {showDiaperChart && (
                         <ResponsiveContainer>
-                            <BarChart data={diaperData} margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}>
-                                <XAxis dataKey='change_time'/>
+                            <BarChart   data={res} margin={{
+                                        top: 20,
+                                        right: 30,
+                                        left: 20,
+                                        bottom: 5,
+                                    }}>
+                                <XAxis dataKey='changeTime'/>
                                 <YAxis />
-                                    <Bar dataKey='type' fill="#8884d8"/>
+                                <Legend/>
+                                <Bar dataKey='pee' fill="#B3EBEF"/>
+                                <Bar dataKey='poo' fill="#D1AF9C" />
                             </BarChart>
                         </ResponsiveContainer>
                     )}
