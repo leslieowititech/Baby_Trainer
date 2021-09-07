@@ -176,7 +176,7 @@ The react-timer-hook is awesome at handling time related loging and manipulation
 
 ## Recharts
 Recharts in my opinion is by far the best library out there that I have come across and the documentation on it very extensive and well written. There are a lot of various graphs, charts and other data visualisation tools on it that are very flexible. I love playing around with its functionality and implemented my charts feature using it.
-
+The Charts componet is just a visualisation of your data.
 ## Figma
 I utilised Figma's design tools to wireframe my app before I begun building out my components. I found this practice to be very helpful in visualising the amount of work building the app will approximately take and what kind of tools do I want to build from scratch and where good third party libraries if available can be utilised.
 
