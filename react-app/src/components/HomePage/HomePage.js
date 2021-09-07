@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './HomePage.css';
 import { findBabies } from '../../store/baby';
-import AddBabyFormModal from '../LoginFormModal';
+// import AddBabyFormModal from '../LoginFormModal';
 import AddBabyForm from '../BabyForms/AddBabyForm';
 
 
@@ -80,11 +80,11 @@ const HomePage = () => {
 
                    <AddBabyFormModal />
               </div> */}
-              {/* <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
+              <NavLink to='/babies/view/charts' className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className='view-charts-btn'>View Charts</button>
                     </div>
-               </NavLink> */}
+               </NavLink>
               <NavLink to='/users/profile' className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className=' view-charts-btn'>View Babies</button>
