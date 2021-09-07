@@ -20,102 +20,155 @@ Baby Trainer is containerized in Docker and uses gihub action to atomatically pu
 The bulk of the app is build using vaniilla React and Redux on the front end. The charts feature and the timer feature that visuallize and record feed dta respectively were implemented using the third party libraries.
 
 ### Example component
+Below is am example of how I handled getting all the diaper logs for a particular user. In This case these are diaper logs.
 
 ```
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
 
-import './OptionModal.css';
-import { Modal } from '../../../context/Modal';
-import TimerModal from '../TimerModal/TimerModal';
-import { addADiaper } from '../../../store/diaper';
 
-const OptionModal = ({option1, option2, icon1, icon2, logType}) => {
-    const user = useSelector(state => state.session.user)
-    const [showModal, setShowModal] = useState(false);
-    const [type, setType] = useState('');
+import { getAllDiapers } from '../../store/diaper';
+import { deleteADiaper } from '../../store/diaper';
+import { editADiaper } from '../../store/diaper';
+import { findBabies } from '../../store/baby';
+import './DiaperLogs.css'
+
+
+const DiaperLogs = () => {
     const dispatch = useDispatch();
-    const {babyId} = useParams();
-    console.log(babyId, '_________babyidHere')
+    const diapers = useSelector(state => state.diapers);
+    const user = useSelector(state => state.session.user);
+    const babies = useSelector(state => state.babies);
+    const userId = user.id;
 
-    const handleClick = (e) => {
-      
-        if (logType === 'Feed log'){            
-            setShowModal(true)           
-            if(e.target.className.includes('bottle')){
-                setType('bottle')
-            }else if(e.target.className.includes('breast')){
-                setType('breast')
-            }
-        } else if (logType === 'Diaper Log'){
-            if(e.target.className.includes('pee')){
-                setType('pee')
-            }else if(e.target.className.includes('poo')){
-                setType('poo')
+    const diaperData = Object.values(diapers);
+    if (diaperData) {
+        diaperData.pop()
+    }
+    const babyData = Object.values(babies);
+    if(babyData){
+        babyData.pop()
+    }
+   
+    const userDiaperData = diaperData.filter(diaper => {
+        return diaper.user_id === userId
+    })
+   
+    const normaliseData = () => {
+        let newData = []
+        for(let i = 0 ; i < babyData.length ; i++){
+            let baby = babyData[i]
+                     
+            for(let j = 0 ; j < userDiaperData.length ; j++ ){
+                
+                let diaper = userDiaperData[j]
+                if(diaper.baby_id === baby.id){
+                    diaper.babyName = baby.name
+                    newData.push(diaper)
+                }
             }
         }
         
+        return newData
     }
-    // console.log(type, '___________justchecking')
-    const date = new Date();
-    const [year, month, day, hour, minute,seconds] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
-    // console.log(`${year}-${month}-${day} ${hour}:${minute}:${seconds}________format Date`)
+   normaliseData()//add baby names to the diaper log
 
-    
+   const handleEditState = (e, id) => {
+        e.preventDefault()
+       const editForm = document.getElementById(`diaper-log-edit-${id}`)
+        // console.log(editForm, '_____here')
+       if(editForm.style.visibility === 'visible'){
+           editForm.style.visibility = 'hidden'
+           editForm.style.display = 'none'
+       }else if(editForm.style.visibility === 'hidden'){
+           editForm.style.visibility = 'visible'
+           editForm.style.display = 'flex'
+       }
+   }
+ 
+   const [changeTime, setChangeTime] = useState(new Date());
+   const [type, setType] = useState('');
+
+   const payload = {
+       type,
+       user_id: user.id,
+       change_time: changeTime
+   }
+
+   const editSpecificDiaper = (e, baby_id, id) => {
+       e.preventDefault()
+        payload.baby_id = baby_id
+        dispatch(editADiaper(payload, id))
+        handleEditState(e, id)
+   }
+
+    const deleteSpecificDiaper = (id) => {
+        dispatch(deleteADiaper(id))
+    }
+
     useEffect(() => {
-        if(type === 'pee' || type === 'poo'){
-            const payload = {
-                type,
-                user_id: user.id,
-                baby_id: +babyId,
-                change_time: `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
-            }
-            // '2017-09-05 18:45:28'
-
-            alert('Diaper change logged')
-            dispatch(addADiaper(payload))
-        }
-    },[type, dispatch, user, babyId])
-   
-    
-    
-   
+        dispatch(getAllDiapers())
+        dispatch(findBabies())
+    }, [dispatch])
 
     return (
-        <div className='option-modal-container'>
-            <h2 className='option-modal-logType' >
-                 {logType}
-            </h2>
-            <div 
-                className='option-modal-item bottle poo' 
-                onClick={handleClick}
-                >
-                <div className='option-modal-icon-container bottle poo' onClick={handleClick}>
-                    <img src={icon1} alt={icon1} className='option-modal-image bottle poo' onClick={handleClick}/>
-                </div>
-                {option1}
+        <div className='diaper-log-contaner'>
+            <h1>Diaper Logs 👶</h1>
+            <div>
+                {userDiaperData?.map(diaperObj => (
+                    <div key={diaperObj.id}>
+                        <div id={`diaper-log-info-${diaperObj.id}`} className='diaper-log-card'>
+                            <h2>
+                                {`Baby Name: ${diaperObj.babyName}`}
+                            </h2>
+                            <h3>
+                                {`Diaper change date: ${diaperObj.change_time}`}
+                            </h3>
+                            <h3>
+                                {`Diaper Type: ${diaperObj.type}`}
+                            </h3>
+                        </div>
+                        <form 
+                                id={`diaper-log-edit-${diaperObj.id}`} 
+                                className='diaper-log-card form' 
+                                style={{ visibility: 'hidden', display: 'none' }}
+                                onSubmit={(e) => editSpecificDiaper(e, diaperObj.baby_id, diaperObj.id)}
+                                >
+                            <h2>{`Baby Name: ${diaperObj.babyName}`}</h2>
+                            <label htmlFor='change_name' >Change Date:</label>
+                            <input 
+                                    id='change_time' 
+                                    value={changeTime}
+                                    onChange={(e) => setChangeTime(e.target.value)}
+                                    className='diaper-log-input-box' 
+                                    type='date'></input>
+                            <label 
+                                    htmlFor='diaper-type'>Diaper Type:</label>
+                            <input 
+                                    id='diaper-type'
+                                    value={type} 
+                                    onChange={(e) => setType(e.target.value)}
+                                    className='diaper-log-input-box'></input>
+                            <button 
+                                    className='logs-save-btn'>Save</button>
+                        </form>
+                        <div>
+                            <button onClick={(e) => handleEditState(e, diaperObj.id)} className='logs-edit-btn'>Edit</button>
+                            <button 
+                                    className='logs-delete-btn'
+                                    onClick={() => deleteSpecificDiaper(diaperObj.id)}
+                                    >Delete</button>
+                        </div>
+
+                    </div>
+                ))}
             </div>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <TimerModal type={type} setShowModal={setShowModal}/>
-                </Modal>
-            )}
-            <span>or</span>
-            <div 
-                className='option-modal-item'
-                onClick={handleClick}
-                >
-                <div className='option-modal-icon-container breast pee'>
-                    <img src={icon2} alt={icon2} className='option-modal-image breast pee'/>
-                </div>
-                {option2}
-            </div>
+
         </div>
     )
 }
 
-export default OptionModal;
+export default DiaperLogs
 ```
 
 ## React-Timer-Hook
