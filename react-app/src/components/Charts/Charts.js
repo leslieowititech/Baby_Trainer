@@ -124,7 +124,7 @@ const Charts = () => {
     return (
         <div className='charts-container'>
             <div className='nav-bar'>
-                <NavLink to='/home' className='home-link'>Home</NavLink>
+                <NavLink to={babyId ? `/babies/${babyId}`:'/home'} className='home-link'>Home</NavLink>
                 <ChartsDropDown/>
                 <LogoutButton />
             </div>
