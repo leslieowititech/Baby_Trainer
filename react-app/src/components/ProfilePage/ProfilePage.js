@@ -6,7 +6,7 @@ import * as babyActions from '../../store/baby';
 import './ProfilePage.css';
 import LogoutButton from '../auth/LogoutButton';
 import AddBabyForm from '../BabyForms/AddBabyForm';
-import DropDown from '../BabyDropDown/BabyDropDown';
+import { setCurrentBaby } from '../../store/currentBaby';
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
@@ -28,6 +28,10 @@ const ProfilePage = () => {
             editForm.style.display = 'flex'
         }
 
+    }
+
+    const handleSetBaby = (payload) => {
+        dispatch(setCurrentBaby(payload))
     }
 
     const deleteSpecificBaby = (id) => {
@@ -71,7 +75,6 @@ const ProfilePage = () => {
         <div className='profilepage-container'>
             <div className='nav-bar'>
                 <NavLink to='/home' className='home-link'>Home</NavLink>
-                <DropDown/>
                 <LogoutButton/>
             </div>
             <div className='user-info'>
@@ -86,7 +89,7 @@ const ProfilePage = () => {
                 <div >
                     {babies?.map(baby => (
                         <div key={baby.id} >
-                            <NavLink to='/logs/edit' className='link-to-logs-page'>
+                            <NavLink to='/logs/edit' className='link-to-logs-page' onClick={() => handleSetBaby(baby)}>
                                 <div className='baby-info-card' id={`baby-info-${baby.id}`}>
                                         <div className='info-item'>Baby name: {baby.name}</div>
                                         <div className='info-item'>Birthday: {baby.birthday}</div>

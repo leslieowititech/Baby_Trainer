@@ -23,21 +23,14 @@ const Charts = () => {
     const diapers = useSelector(state => state.diapers);
     const diaperData = Object.values(diapers);
 
-    if(diaperData){
-        diaperData.pop()
-    }
-
-    if (babyData) {
-        babyData.pop()
-    }
+   
 
     let displayData;
-    if(feedData){
-        feedData.pop()
-        displayData = feedData.filter(feed => {
-            return feed.baby_id === currentBaby.id
-        })
-    }
+    
+    displayData = feedData.filter(feed => {
+        return feed.baby_id === currentBaby.id
+    })
+    
 
     let displayDataDiapers;
     displayDataDiapers = diaperData.filter(diaper => {
