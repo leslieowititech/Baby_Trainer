@@ -6,6 +6,7 @@ import * as babyActions from '../../store/baby';
 import './ProfilePage.css';
 import LogoutButton from '../auth/LogoutButton';
 import AddBabyForm from '../BabyForms/AddBabyForm';
+import DropDown from '../BabyDropDown/BabyDropDown';
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
@@ -70,6 +71,7 @@ const ProfilePage = () => {
         <div className='profilepage-container'>
             <div className='nav-bar'>
                 <NavLink to='/home' className='home-link'>Home</NavLink>
+                <DropDown/>
                 <LogoutButton/>
             </div>
             <div className='user-info'>

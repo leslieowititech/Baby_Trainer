@@ -15,18 +15,17 @@ const DiaperLogs = () => {
     const user = useSelector(state => state.session.user);
     const babies = useSelector(state => state.babies);
     const userId = user.id;
+    const currentBaby = useSelector(state => state.currentBaby);
 
     const diaperData = Object.values(diapers);
     
     const babyData = Object.values(babies);
-    if(babyData){
-        babyData.pop()
-    }
+    
    
     const userDiaperData = diaperData.filter(diaper => {
         return diaper.user_id === userId
-    })
-   
+    }).filter(diaper => diaper.baby_id === currentBaby.id)
+//    console.log(userDiaperData, '________________hereDIAPER')
     const normaliseData = () => {
         let newData = []
         for(let i = 0 ; i < babyData.length ; i++){

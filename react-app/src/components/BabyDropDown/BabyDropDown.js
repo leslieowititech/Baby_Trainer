@@ -29,9 +29,10 @@ const DropDown = () => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
     
-    const handleCurrentBaby = (payload) => [
+    const handleCurrentBaby = (payload) => {
         dispatch(setCurrentBaby(payload))
-    ]
+        setClicked(false)
+    }
     
 
     return (

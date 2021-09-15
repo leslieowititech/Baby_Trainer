@@ -14,6 +14,7 @@ const FeedLogs = () => {
     const user = useSelector(state => state.session.user);
     const babies = useSelector(state => state.babies);
     const userId = user.id;
+    const currentBaby = useSelector(state => state.currentBaby);
 
     const feedData = Object.values(feeds);
     
@@ -24,7 +25,7 @@ const FeedLogs = () => {
 
     const userFeedData = feedData.filter(feed => {
         return feed.user_id === userId
-    })
+    }).filter(feed => feed.baby_id === currentBaby.id)
 
     const normaliseData = () => {
         let newData = [];
@@ -60,7 +61,8 @@ const FeedLogs = () => {
 
     const [amount, setAmount] = useState();
     const [type, settype] = useState();
-    const [feedTime, setFeedTime] = useState(new Date())
+    const [feedTime, setFeedTime] = useState(new Date());
+    const [noData, setNodata] = useState(false)
 
     const payload = {
         user_id: user.id,
@@ -82,7 +84,10 @@ const FeedLogs = () => {
     useEffect(() => {
         dispatch(getFeeds())
         dispatch(findBabies())
-    }, [dispatch])
+        if(!userFeedData.length){
+            setNodata(true)
+        }
+    }, [dispatch, userFeedData])
 
     return (
         <div className='feed-log-container'>
@@ -147,7 +152,8 @@ const FeedLogs = () => {
                         </div>
                     </div>
 
-                ))}
+                )) }
+                {noData && <h3 className='no-feed-msg'>No feeds yet  please add a feed to see logs</h3>}
             </div>
 
         </div>
