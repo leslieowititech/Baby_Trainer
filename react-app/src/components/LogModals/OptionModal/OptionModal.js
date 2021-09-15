@@ -1,6 +1,5 @@
 import React, {useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
 
 import './OptionModal.css';
 import { Modal } from '../../../context/Modal';
@@ -13,8 +12,6 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
     const [type, setType] = useState('');
     const dispatch = useDispatch();
     const currentBaby = useSelector(state => state.currentBaby);
-    const {babyId} = useParams();
-    // console.log(babyId, '_________babyidHere')
 
     const handleClick = (e) => {
       
@@ -37,11 +34,11 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
         }
         
     }
-    console.log(type, '___________justchecking')
+    // console.log(type, '___________justchecking')
     const date = new Date();
     const [year, month, day, hour, minute,seconds] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
     // console.log(`${year}-${month}-${day} ${hour}:${minute}:${seconds}________format Date`)
-
+    //  console.dir(new Date(), '______________date')
     
     useEffect(() => {
         if(type === 'pee' || type === 'poo'){
@@ -49,7 +46,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
                 type,
                 user_id: user.id,
                 baby_id: currentBaby.id,
-                change_time: `${year}-${month}-${day}`
+                change_time: new Date().toDateString()
             }
             // '2017-09-05 18:45:28'
 

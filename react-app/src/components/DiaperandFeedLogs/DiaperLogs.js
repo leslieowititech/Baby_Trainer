@@ -39,7 +39,8 @@ const DiaperLogs = () => {
    }
  
    const [changeTime, setChangeTime] = useState(new Date());
-   const [type, setType] = useState('');
+   const [type, setType] = useState();
+   console.dir(new Date())
 
    const payload = {
        type,
@@ -102,7 +103,7 @@ const DiaperLogs = () => {
                                     value={type} 
                                     onChange={(e) => setType(e.target.value)}
                                     className='diaper-log-input-box'></input> */}
-                            <select value={type} onChange={(e) => setType(e.target.value)} className='diaper-log-input-box' >
+                            <select value={(e) => e.target.value} onChange={(e) => setType(e.target.value)} className='diaper-log-input-box' >
                                 <option value='pee'>pee</option>
                                 <option value='poo'>poo</option>
                             </select>
