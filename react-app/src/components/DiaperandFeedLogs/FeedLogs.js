@@ -12,40 +12,18 @@ const FeedLogs = () => {
     const dispatch = useDispatch();
     const feeds = useSelector(state => state.feeds);
     const user = useSelector(state => state.session.user);
-    const babies = useSelector(state => state.babies);
     const userId = user.id;
+    const currentBaby = useSelector(state => state.currentBaby);
 
     const feedData = Object.values(feeds);
-    if(feedData){
-        feedData.pop()
-    }
-    const babyData = Object.values(babies);
-    if(babyData){
-        babyData.pop()
-    }
+    
+    
 
     const userFeedData = feedData.filter(feed => {
         return feed.user_id === userId
-    })
+    }).filter(feed => feed.baby_id === currentBaby.id).filter(feed => feed.baby_id === currentBaby.id)
 
-    const normaliseData = () => {
-        let newData = [];
-
-        for(let i = 0 ; i < babyData.length ; i++){
-            let baby = babyData[i];
-
-            for(let j = 0 ; j < userFeedData.length; j++){
-                let feed = userFeedData[j];
-                if(feed.baby_id === baby.id){
-                    feed.babyName = baby.name;
-                    newData.push(feed)
-                }
-            } 
-        }
-        return newData
-    }
-
-    normaliseData()//add babynames to the feed log
+    
 
     const handleEditState = (e, id) => {
         e.preventDefault();
@@ -62,7 +40,7 @@ const FeedLogs = () => {
 
     const [amount, setAmount] = useState();
     const [type, settype] = useState();
-    const [feedTime, setFeedTime] = useState(new Date())
+    const [feedTime, setFeedTime] = useState(new Date());
 
     const payload = {
         user_id: user.id,
@@ -89,12 +67,13 @@ const FeedLogs = () => {
     return (
         <div className='feed-log-container'>
             <h1>Feed Logs 🍼</h1>
+            {userFeedData.length ? <h3>{`Feed logs for baby ${currentBaby.name}`}</h3> : <h3>No feed logs please enter a feeding to view feeds</h3>}
             <div>
                 {userFeedData?.map(feedObj => (
                     <div key={feedObj.id}>
                         <div id={`feed-log-info-${feedObj.id}`} className='feed-log-card'>
                             <h2>
-                                {`Baby Name: ${feedObj.babyName}`}
+                                {`Baby Name: ${currentBaby.name}`}
                             </h2>
                             <h3>{`Feed Date: ${feedObj.feed_time}`}</h3>
                             <h3>
@@ -149,7 +128,8 @@ const FeedLogs = () => {
                         </div>
                     </div>
 
-                ))}
+                )) }
+                {/* {noData && <h3 className='no-feed-msg'>No feeds yet  please add a feed to see logs</h3>} */}
             </div>
 
         </div>

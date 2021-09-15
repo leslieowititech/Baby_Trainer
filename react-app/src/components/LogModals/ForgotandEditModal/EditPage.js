@@ -6,6 +6,7 @@ import LogoutButton from '../../auth/LogoutButton';
 
 import DiaperLogs from '../../DiaperandFeedLogs/DiaperLogs';
 import FeedLogs from '../../DiaperandFeedLogs/FeedLogs';
+import DropDown from '../../BabyDropDown/BabyDropDown';
 import './EditPage.css';
 
 const EditPage = () => {    
@@ -14,7 +15,7 @@ const EditPage = () => {
         <div className='edit-page-container'>
             <div className='nav-bar'>
                 <NavLink to='/home' className='home-link'>Home</NavLink>
-                {/* <EditPageDropDown/> */}
+                <DropDown />
                 <LogoutButton />
             </div>
             <div className='all-logs'>

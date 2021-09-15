@@ -32,7 +32,7 @@ const editBaby = (baby) => {
     }
 }
 
-const initialState = { babies: null}
+const initialState = {}
 
 const babyReducer = (state = initialState, action) => {
     let newState= {...state};
@@ -78,6 +78,8 @@ export const findBabies = () => async dispatch => {
         return response;
     }
 }
+
+
 
 export const addBaby = (name, birthday, id) => async (dispatch) => {
     // console.log('Payload____ HEREEE')

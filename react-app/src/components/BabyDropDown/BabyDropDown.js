@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
 // import AddBabyFormModal from '../LoginFormModal';
 import * as babyActions from '../../store/baby';
+import { setCurrentBaby } from '../../store/currentBaby';
 import './BabyDropDown.css'
 
 const DropDown = () => {
@@ -27,7 +27,11 @@ const DropDown = () => {
     useEffect(() => {
         dispatch(babyActions.findBabies())
     }, [dispatch])
-
+    
+    const handleCurrentBaby = (payload) => {
+        dispatch(setCurrentBaby(payload))
+        setClicked(false)
+    }
     
 
     return (
@@ -37,10 +41,9 @@ const DropDown = () => {
             {isClicked &&
             
                 <div className='dropdown-items'>
-                    {babies.map(baby => (
-                        <NavLink key={baby.id} to={`/babies/${baby.id}`}>
-                            <li className='drop-down-list-item'>{baby.name}</li>
-                        </NavLink>
+                    {babies.map(baby => (                       
+                            <li className='drop-down-list-item' onClick={() => handleCurrentBaby(baby)}>{baby.name}</li>
+                       
                     ))}                
                 {/* <AddBabyFormModal /> */}
                 </div>

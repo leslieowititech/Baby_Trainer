@@ -12,6 +12,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
     const [showModal, setShowModal] = useState(false);
     const [type, setType] = useState('');
     const dispatch = useDispatch();
+    const currentBaby = useSelector(state => state.currentBaby);
     const {babyId} = useParams();
     // console.log(babyId, '_________babyidHere')
 
@@ -36,7 +37,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
         }
         
     }
-    // console.log(type, '___________justchecking')
+    console.log(type, '___________justchecking')
     const date = new Date();
     const [year, month, day, hour, minute,seconds] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
     // console.log(`${year}-${month}-${day} ${hour}:${minute}:${seconds}________format Date`)
@@ -47,7 +48,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
             const payload = {
                 type,
                 user_id: user.id,
-                baby_id: +babyId,
+                baby_id: currentBaby.id,
                 change_time: `${year}-${month}-${day}`
             }
             // '2017-09-05 18:45:28'
@@ -56,7 +57,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
             alert('Diaper Change is logged go to view logs to see it or edit it')
            
         }
-    },[type, dispatch, user, babyId, day, year, month, hour, minute, seconds])
+    },[type, dispatch, user, currentBaby, day, year, month, hour, minute, seconds])
    
     
     

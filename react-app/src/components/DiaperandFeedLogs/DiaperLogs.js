@@ -13,40 +13,17 @@ const DiaperLogs = () => {
     const dispatch = useDispatch();
     const diapers = useSelector(state => state.diapers);
     const user = useSelector(state => state.session.user);
-    const babies = useSelector(state => state.babies);
     const userId = user.id;
+    const currentBaby = useSelector(state => state.currentBaby);
 
     const diaperData = Object.values(diapers);
-    if (diaperData) {
-        diaperData.pop()
-    }
-    const babyData = Object.values(babies);
-    if(babyData){
-        babyData.pop()
-    }
+    
+    
    
     const userDiaperData = diaperData.filter(diaper => {
         return diaper.user_id === userId
-    })
+    }).filter(diaper => diaper.baby_id === currentBaby.id)
    
-    const normaliseData = () => {
-        let newData = []
-        for(let i = 0 ; i < babyData.length ; i++){
-            let baby = babyData[i]
-                     
-            for(let j = 0 ; j < userDiaperData.length ; j++ ){
-                
-                let diaper = userDiaperData[j]
-                if(diaper.baby_id === baby.id){
-                    diaper.babyName = baby.name
-                    newData.push(diaper)
-                }
-            }
-        }
-        
-        return newData
-    }
-   normaliseData()//add baby names to the diaper log
 
    const handleEditState = (e, id) => {
         e.preventDefault()
@@ -89,12 +66,13 @@ const DiaperLogs = () => {
     return (
         <div className='diaper-log-contaner'>
             <h1>Diaper Logs 👶</h1>
+            {userDiaperData.length ? <h3>Diaper logs for baby : {currentBaby.name}</h3> : <h3>No diaper logs please enter a log to view logs</h3>}
             <div>
                 {userDiaperData?.map(diaperObj => (
                     <div key={diaperObj.id}>
                         <div id={`diaper-log-info-${diaperObj.id}`} className='diaper-log-card'>
                             <h2>
-                                {`Baby Name: ${diaperObj.babyName}`}
+                                {`Baby Name: ${currentBaby.name}`}
                             </h2>
                             <h3>
                                 {`Diaper change date: ${diaperObj.change_time}`}
@@ -119,11 +97,15 @@ const DiaperLogs = () => {
                                     type='date'></input>
                             <label 
                                     htmlFor='diaper-type'>Diaper Type:</label>
-                            <input 
+                            {/* <input 
                                     id='diaper-type'
                                     value={type} 
                                     onChange={(e) => setType(e.target.value)}
-                                    className='diaper-log-input-box'></input>
+                                    className='diaper-log-input-box'></input> */}
+                            <select value={type} onChange={(e) => setType(e.target.value)} className='diaper-log-input-box' >
+                                <option value='pee'>pee</option>
+                                <option value='poo'>poo</option>
+                            </select>
                             <button 
                                     className='logs-save-btn'>Save</button>
                         </form>

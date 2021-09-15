@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import { useSelector, useDispatch } from 'react-redux';
-import {useParams} from 'react-router-dom';
 
 
 
@@ -12,7 +11,8 @@ const TimerModal = ({type}) => {
     // console.log(type, 'type_______')
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const {babyId} = useParams();
+    const currentBaby = useSelector(state => state.currentBaby);
+
     // console.log(babyId,'________________babyId')
 
     const playUrl = 'https://image.flaticon.com/icons/png/512/702/702148.png';
@@ -43,7 +43,7 @@ const TimerModal = ({type}) => {
     } = useStopwatch({ autoStart: true });
 
     const handlePlay = () => {
-        if(babyId){
+        if(currentBaby.id){
             
             setPlaySate(true) 
             start()      
@@ -82,7 +82,7 @@ const TimerModal = ({type}) => {
         // feed_time='2017-09-05 19:45:28',
         feed_time: `${year}-${month}-${day}`,
         user_id: user.id,
-        baby_id: +babyId,
+        baby_id: currentBaby.id,
         amount: getTotalTimeForFeed(),
         type
     }
