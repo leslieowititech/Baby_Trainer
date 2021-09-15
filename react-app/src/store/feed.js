@@ -32,7 +32,7 @@ const editFeed = (feed) => {
     }
 }
 
-const initialState = { feed: null }
+const initialState = { }
 
 const feedReducer = ( state = initialState, action) =>  {
     let newState = {...state}

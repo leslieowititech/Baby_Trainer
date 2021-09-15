@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import { useSelector, useDispatch } from 'react-redux';
-import {useParams} from 'react-router-dom';
 
 
 
@@ -12,7 +11,6 @@ const TimerModal = ({type}) => {
     // console.log(type, 'type_______')
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const {babyId} = useParams();
     const currentBaby = useSelector(state => state.currentBaby);
 
     // console.log(babyId,'________________babyId')

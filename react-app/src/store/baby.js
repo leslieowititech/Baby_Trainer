@@ -32,7 +32,7 @@ const editBaby = (baby) => {
     }
 }
 
-const initialState = { babies: null}
+const initialState = {}
 
 const babyReducer = (state = initialState, action) => {
     let newState= {...state};

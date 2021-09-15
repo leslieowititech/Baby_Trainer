@@ -16,9 +16,7 @@ const FeedLogs = () => {
     const userId = user.id;
 
     const feedData = Object.values(feeds);
-    if(feedData){
-        feedData.pop()
-    }
+    
     const babyData = Object.values(babies);
     if(babyData){
         babyData.pop()

@@ -37,7 +37,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
         }
         
     }
-    // console.log(type, '___________justchecking')
+    console.log(type, '___________justchecking')
     const date = new Date();
     const [year, month, day, hour, minute,seconds] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
     // console.log(`${year}-${month}-${day} ${hour}:${minute}:${seconds}________format Date`)

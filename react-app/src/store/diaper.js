@@ -34,7 +34,7 @@ const editDiaper = (diaper) => {
     }
 }
 
-const initialState = { diaper: null }
+const initialState = {}
 
 const diaperReducer = (state = initialState, action) => {
     let newState = {...state}

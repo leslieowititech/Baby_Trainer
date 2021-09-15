@@ -17,9 +17,7 @@ const DiaperLogs = () => {
     const userId = user.id;
 
     const diaperData = Object.values(diapers);
-    if (diaperData) {
-        diaperData.pop()
-    }
+    
     const babyData = Object.values(babies);
     if(babyData){
         babyData.pop()
