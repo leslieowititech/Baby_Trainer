@@ -79,6 +79,8 @@ export const findBabies = () => async dispatch => {
     }
 }
 
+
+
 export const addBaby = (name, birthday, id) => async (dispatch) => {
     // console.log('Payload____ HEREEE')
     const response = await fetch('/api/babies/create', {

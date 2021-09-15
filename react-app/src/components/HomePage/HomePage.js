@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import LogItemDiv from '../LogItemDiv/LogItemDiv';
 import DropDown from '../BabyDropDown/BabyDropDown';
-import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -16,8 +15,8 @@ import AddBabyForm from '../BabyForms/AddBabyForm';
 const HomePage = () => {   
      const babies = useSelector(state => state.babies);
      const babyData = Object.values(babies);
-     const { babyId } = useParams();
      const dispatch = useDispatch(); 
+     const currentBaby = useSelector(state => state.currentBaby);
      // console.log(babyId, '___________homepage')
      
      // const mooniconUrl = 'https://image.flaticon.com/icons/png/512/702/702471.png';
@@ -25,23 +24,14 @@ const HomePage = () => {
      const diaperUrl = 'https://image.flaticon.com/icons/png/512/2336/2336358.png';
      const breastFeedUrl = 'https://image.flaticon.com/icons/png/512/4150/4150402.png';
 
-     const [logMessage, setLogMessage] = useState('Please select a baby to start logging');
+     const [logMessage, setLogMessage] = useState('');
 
      if(babyData){
           babyData.pop()
      }
 
      
-     useEffect(() => {
-          if (babyId) {
-               const [babyBeingLogged] = babyData.filter(baby => {
-                    return baby.id === +babyId
-               })
-
-               setLogMessage(`Now logging for baby: ${babyBeingLogged?.name}`)
-
-          }
-     },[babyData, babyId])
+     
     
      const handleEditState = (e, id) => {
           e.preventDefault()
@@ -57,7 +47,12 @@ const HomePage = () => {
 
      useEffect(() => {
           dispatch(findBabies())
-     },[dispatch])
+          if(currentBaby.name){
+               setLogMessage(`Now logging for baby: ${currentBaby.name}`)
+          }else{
+               setLogMessage('Please select a baby to start logging')
+          }
+     },[dispatch, currentBaby])
     
     return (
         <div className='home-page-container'>
@@ -75,13 +70,9 @@ const HomePage = () => {
                     {/* <LogItemDiv title='Sleep' imgUrl={mooniconUrl}/>                   */}
                     <LogItemDiv  title='Feed' imgUrl={bottleUrl} icon1={bottleUrl} icon2={breastFeedUrl} option1='Bottle' option2='Breast' logType='Feed log' />
                     <LogItemDiv title='Diaper' imgUrl={diaperUrl} icon1={diaperUrl} icon2={diaperUrl} option1='Poo' option2='Pee' logType='Diaper Log'/>
-           </div>
-              {/* <div className='view-charts-btn-div'>
-
-                   <AddBabyFormModal />
-              </div> */}
+           </div>              
               
-              <NavLink to={babyId ? `/view/chart/${babyId}`:'/babies/view/charts'} className='view-charts-btn-div'>
+              <NavLink to={'/babies/view/charts'} className='view-charts-btn-div'>
                     <div className='view-charts-btn-div'>
                               <button className='view-charts-btn'>View Charts</button>
                     </div>

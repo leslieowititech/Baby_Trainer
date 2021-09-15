@@ -4,12 +4,14 @@ import session from './session'
 import babyReducer from './baby';
 import feedReducer from './feed';
 import diaperReducer from './diaper';
+import setCurrentBabyReduer from './currentBaby';
 
 const rootReducer = combineReducers({
   session,
   babies: babyReducer,
   feeds: feedReducer,
-  diapers: diaperReducer
+  diapers: diaperReducer,
+  currentBaby: setCurrentBabyReduer
 });
 
 
