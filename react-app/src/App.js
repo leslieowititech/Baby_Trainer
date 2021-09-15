@@ -41,21 +41,12 @@ function App() {
         <ProtectedRoute path='/users/profile' exact={true}>
           <ProfilePage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/babies/:babyId' exact={true}>
-          <HomePage />
-        </ProtectedRoute>
         <ProtectedRoute path='/babies/view/charts' exact={true}>
           <Charts/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/view/chart/:babyId' exact={true}>
-            <Charts/>
         </ProtectedRoute>
         <ProtectedRoute to='/logs/edit' exact={true}>
             <EditPage/>
         </ProtectedRoute>
-        {/* <ProtectedRoute to='/edit/:babyId' exact={true}>
-            <EditPage/>
-        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

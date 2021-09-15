@@ -80,7 +80,7 @@ const TimerModal = ({type}) => {
     
     const payload = {
         // feed_time='2017-09-05 19:45:28',
-        feed_time: `${year}-${month}-${day}`,
+        feed_time: new Date().toDateString(),
         user_id: user.id,
         baby_id: currentBaby.id,
         amount: getTotalTimeForFeed(),
