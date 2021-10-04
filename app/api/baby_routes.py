@@ -7,6 +7,17 @@ from app.api.utils import validation_errors_to_error_messages
 
 baby_routes = Blueprint('babies', __name__)
 
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @baby_routes.route('/')
 def get_all_babies():
     babies = Baby.query.all()
@@ -62,6 +73,6 @@ def create_a_baby():
         db.session.commit()
 
         return new_baby.to_dict()
-    return 'Bad data'
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

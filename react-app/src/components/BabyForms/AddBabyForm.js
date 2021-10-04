@@ -13,24 +13,27 @@ const AddBabyForm = () => {
     const [birthday, setBirthday] = useState(new Date());
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
         const editForm = document.getElementById(`add-baby-1`)
-        if(name.length === 0){
-            errors.push('Name cannot be 0 characters')
-        }else{
-            dispatch(addBaby(name, birthday, user.id))
-            if (editForm.style.visibility === 'visible') {
-                editForm.style.visibility = 'hidden'
-                editForm.style.display = 'none'
-            } else if (editForm.style.visibility === 'hidden') {
-                editForm.style.visibility = 'visible'
-                editForm.style.display = 'flex'
+        
+            const data = await dispatch(addBaby(name, birthday, user.id))
+            if(data){
+                setErrors(data)
+            }else{
+
+                if (editForm.style.visibility === 'visible') {
+                    editForm.style.visibility = 'hidden'
+                    editForm.style.display = 'none'
+                } else if (editForm.style.visibility === 'hidden') {
+                    editForm.style.visibility = 'visible'
+                    editForm.style.display = 'flex'
+                }
+                
+                alert('Baby had been added you can now select your baby and start logging!! :)')
             }
-            
-            alert('Baby had been added you can now select your baby and start logging!! :)')
-        }
+        
         
 
     }
@@ -38,11 +41,16 @@ const AddBabyForm = () => {
        
 
 <form style = {{ visibility: 'hidden', display: 'none'}} onSubmit={handleSubmit} id='add-baby-1' className='add-baby-form' >
-            <ul>
-                {errors.map((error, index) => (
-                    <li key={index}>{error}</li>
+            {errors.length && (
+
+            <div className='errors'>
+                {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
                 ))}
-            </ul>
+            </div>
+            )
+            
+            }
             <h2 className='add-baby-title'>Welcome let's add your baby</h2>
             <input 
                     value={name}
