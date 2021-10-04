@@ -13,7 +13,6 @@ const TimerModal = ({type}) => {
     const user = useSelector(state => state.session.user);
     const currentBaby = useSelector(state => state.currentBaby);
 
-    // console.log(babyId,'________________babyId')
 
     const playUrl = 'https://image.flaticon.com/icons/png/512/702/702148.png';
     const pauseUrl = 'https://image.flaticon.com/icons/png/512/2088/2088562.png';
@@ -73,9 +72,7 @@ const TimerModal = ({type}) => {
         setPlaySate(false) 
         pause()
     }
-    const date = new Date();
 
-    const [year, month, day, hour, minute] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes()]
 
     
     const payload = {
