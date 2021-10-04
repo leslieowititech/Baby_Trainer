@@ -41,14 +41,14 @@ const AddBabyForm = () => {
        
 
 <form style = {{ visibility: 'hidden', display: 'none'}} onSubmit={handleSubmit} id='add-baby-1' className='add-baby-form' >
-            {errors.length && (
+            {errors.length && 
 
-            <div className='errors'>
-                {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                ))}
-            </div>
-            )
+                <div className='errors'>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
+            
             
             }
             <h2 className='add-baby-title'>Welcome let's add your baby</h2>
