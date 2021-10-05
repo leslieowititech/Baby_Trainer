@@ -17,13 +17,13 @@ def valid_age(form, field):
     birthday = field.data
     today = date.today()
     delta = today - birthday
-    print(today, '_________________0000000________________', birthday)
-    print(today - birthday, '_____________subtract')
-    print(delta.days, '____________number?')
+    # print(today, '_________________0000000________________', birthday)
+    # print(today - birthday, '_____________subtract')
+    # print(delta.days, '____________number?')
     if delta.days > 730:
-        raise ValidationError('Thats too old to be a baby a baby has to be less than 3 years old')
+        raise ValidationError('Birthday entered has surpassed allowed entry age of 2yrs')
     if delta.days < 0:
-        raise ValidationError('Thats a future baby :) please add a baby born less between today and the last 3 years')
+        raise ValidationError('Birthday entered cannot be in the future')
 
 class  BabyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(), baby_exists])
