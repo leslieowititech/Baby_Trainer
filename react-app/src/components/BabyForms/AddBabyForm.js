@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { addBaby } from '../../store/baby';
@@ -37,20 +37,28 @@ const AddBabyForm = () => {
         
 
     }
+
+    useEffect(() => {
+        const errorMessages = document.getElementById('errors')
+        if(errors.length){
+            errorMessages.style.visibility = 'visible'
+            errorMessages.style.display = 'flex'
+        }
+    }, [errors])
     return (
        
 
 <form style = {{ visibility: 'hidden', display: 'none'}} onSubmit={handleSubmit} id='add-baby-1' className='add-baby-form' >
-            {errors.length && 
+            
 
-                <div className='errors'>
+            <div className='errors' style={{ visibility: 'hidden', display: 'none' }} id='errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
             
             
-            }
+            
             <h2 className='add-baby-title'>Welcome let's add your baby</h2>
             <input 
                     value={name}
