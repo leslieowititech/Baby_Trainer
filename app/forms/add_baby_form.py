@@ -10,7 +10,7 @@ def baby_exists(form, field):
     name = field.data
     baby = Baby.query.filter(Baby.name == name).first()
     if baby:
-        raise ValidationError('Baby name already exists')
+        raise ValidationError('Baby name entered already exists')
 
 
 def valid_age(form, field):

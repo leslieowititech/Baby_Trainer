@@ -33,4 +33,7 @@
     padding: 15px;
     margin-bottom: 15px;
     background: #f2c2c22f;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
 }
