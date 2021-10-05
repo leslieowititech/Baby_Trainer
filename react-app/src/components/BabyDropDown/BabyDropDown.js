@@ -41,8 +41,8 @@ const DropDown = () => {
             {isClicked &&
             
                 <div className='dropdown-items'>
-                    {babies.map(baby => (                       
-                            <li className='drop-down-list-item' onClick={() => handleCurrentBaby(baby)}>{baby.name}</li>
+                    {babies.map((baby, index) => (                       
+                            <li className='drop-down-list-item' onClick={() => handleCurrentBaby(baby)} key={index}>{baby.name}</li>
                        
                     ))}                
                 {/* <AddBabyFormModal /> */}

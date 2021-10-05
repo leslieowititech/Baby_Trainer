@@ -19,10 +19,10 @@ const AddBabyForm = () => {
         const editForm = document.getElementById(`add-baby-1`)
         
             const data = await dispatch(addBaby(name, birthday, user.id))
-            if(data){
+            if(!data.ok){
                 setErrors(data)
             }else{
-
+                // console.log('why___________00000')
                 if (editForm.style.visibility === 'visible') {
                     editForm.style.visibility = 'hidden'
                     editForm.style.display = 'none'
@@ -37,6 +37,7 @@ const AddBabyForm = () => {
         
 
     }
+    console.log(errors, 'errors')
 
     useEffect(() => {
         const errorMessages = document.getElementById('errors')
@@ -51,8 +52,8 @@ const AddBabyForm = () => {
 <form style = {{ visibility: 'hidden', display: 'none'}} onSubmit={handleSubmit} id='add-baby-1' className='add-baby-form' >
             
 
-            <div className='errors' style={{ visibility: 'hidden', display: 'none' }} id='errors'>
-                    {errors.map((error, ind) => (
+            <div className='errors' id='errors' style={{ visibility: 'hidden', display: 'none' }}>
+                    {errors.length && errors?.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
                 </div>
