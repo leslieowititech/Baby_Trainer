@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './OptionModal.css';
 import { Modal } from '../../../context/Modal';
 import TimerModal from '../TimerModal/TimerModal';
+import BottleModal from '../BootleModal';
 import { addADiaper } from '../../../store/diaper';
 
 const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => {
@@ -34,11 +35,10 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
         }
         
     }
-    // console.log(type, '___________justchecking')
+    
     const date = new Date();
     const [year, month, day, hour, minute,seconds] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
-    // console.log(`${year}-${month}-${day} ${hour}:${minute}:${seconds}________format Date`)
-    //  console.dir(new Date(), '______________date')
+   
     
     useEffect(() => {
         if(type === 'pee' || type === 'poo'){
@@ -58,8 +58,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
    
     
     
-//    console.log(modalState, '___________________hereModal')
-    // console.log(errors, '_____________errorsHere')
+
     return (
         <div className='option-modal-container'>
             
@@ -75,7 +74,7 @@ const OptionModal = ({ option1, option2, icon1, icon2, logType, modalState}) => 
                 </div>
                 {option1}
             </div>
-            {showModal && (
+            {showModal && type === 'breast' &&(
                 <Modal onClose={() => setShowModal(false)}>
                     <TimerModal type={type} setShowModal={setShowModal}/>
                 </Modal>
